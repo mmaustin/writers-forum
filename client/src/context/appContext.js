@@ -10,20 +10,12 @@ const AppContext = React.createContext();
 
 const ADD_TO_ARRAY ='ADD_TO_ARRAY';
 
-const reducer = (state,action)=>{
-    if(action.type === ADD_TO_ARRAY){
-        return{
-            ...state,
-            array: state.array.concat(action.payload),
-        }
-    }
-}
 
 const AppProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, testState)
 
-    const arrayChange = addedArray => {
-        dispatch({type: ADD_TO_ARRAY, payload: {addedArray}})
+    const arrayChange = (a) => {
+        dispatch({type: ADD_TO_ARRAY, payload: a})
     }
 
     return(
@@ -37,6 +29,15 @@ const AppProvider = ({children}) => {
       </AppContext.Provider>
     )
   }
+
+  const reducer = (state,action)=>{
+    if(action.type === ADD_TO_ARRAY){
+        return{
+            ...state,
+            array: [...state.array, action.payload],
+        }
+    }
+}  
   
   const useAppContext = () => {
     return useContext(AppContext)
