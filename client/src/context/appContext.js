@@ -8,3 +8,14 @@ const testState = {
 
 const AppContext = React.createContext;
 
+const ADD_TO_ARRAY ='ADD_TO_ARRAY';
+
+const reducer = (state,action)=>{
+    if(action.type === ADD_TO_ARRAY){
+        return{
+            ...state,
+            array: state.array.concat(action.payload),
+        }
+    }
+}
+
