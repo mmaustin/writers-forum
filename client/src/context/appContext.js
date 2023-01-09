@@ -1,12 +1,12 @@
 import React, { useReducer, useContext } from 'react';
 
 const testState = {
-    number: 0,
+    number: 23,
     array: [5,9,2,4,7],
     object: {name: 'McCray', stats: [6.2, 180, 'fine']}
 }
 
-const AppContext = React.createContext;
+const AppContext = React.createContext();
 
 const ADD_TO_ARRAY ='ADD_TO_ARRAY';
 
