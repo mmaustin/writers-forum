@@ -19,3 +19,27 @@ const reducer = (state,action)=>{
     }
 }
 
+const AppProvider = ({children}) => {
+    const [state, dispatch] = useReducer(reducer, testState)
+
+    const arrayChange = addedArray => {
+        dispatch({type: ADD_TO_ARRAY, payload: {addedArray}})
+    }
+
+    return(
+        <AppContext.Provider
+        value={{
+          ...state,
+          arrayChange,
+        }}
+      >
+        {children}
+      </AppContext.Provider>
+    )
+  }
+  
+  const useAppContext = () => {
+    return useContext(AppContext)
+  }
+  
+  export { AppProvider, useAppContext }        
