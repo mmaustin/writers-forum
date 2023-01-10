@@ -18,7 +18,8 @@ html {
   --primary-200: #87eaf2;
   --primary-300: #54d1db;
   --primary-400: #38bec9;
-  --primary-500: #2cb1bc;
+  /* --primary-500: #2cb1bc; */
+  --primary-500: #312d2d;
   --primary-600: #14919b;
   --primary-700: #0e7c86;
   --primary-800: #0a6c74;
@@ -335,4 +336,19 @@ ul {
     display: inline-block;
     margin-right: 0.5rem;
   }
+}
+
+/* my css add-ons */
+nav {
+  width: var(--fluid-width);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+}
+
+.landing-span {
+  color: var(--primary-800);
+  font-weight: bold;
 }
