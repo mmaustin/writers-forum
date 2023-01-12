@@ -1,10 +1,13 @@
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import { Landing } from "./pages"
 
 const App = () => {
   return (
-    <div>
-      <Landing/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Landing/>} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 export default App
