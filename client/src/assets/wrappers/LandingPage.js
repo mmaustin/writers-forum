@@ -25,7 +25,11 @@ const Wrapper = styled.main`
     color: var(--grey-600);
   }
   .main-img {
-    display: none;
+    display: block;
+  }
+
+  .small-screen-button {
+    margin-top: 20px;
   }
   @media (min-width: 992px) {
     .page {

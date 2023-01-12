@@ -1,13 +1,13 @@
 import main from '../assets/images/main.svg';
-import logo from '../assets/images/favicon.ico';
 import Wrapper from '../assets/wrappers/LandingPage';
+import { Logo } from '../components';
 //import {Link} from 'react-router-dom';
 
 const Landing = () => {
   return (
     <Wrapper>
         <nav>
-            <img src={logo} alt='landing logo' className='logo'/>
+            <Logo/>
         </nav>
         <div className='container page'>
             <div className='info'>
@@ -19,7 +19,7 @@ const Landing = () => {
                 </p>
                 <button className='btn btn-hero'> Login/Register</button>
                 &nbsp;&nbsp;<span className='landing-span'>Or View All Of The </span>&nbsp;&nbsp;
-                <button className='btn btn-hero'> Completed Works </button>
+                <button className='btn btn-hero small-screen-button' > Completed Works </button>
             </div>
             <img src={main} alt='event scene' className='img main-img'/>
         </div>
