@@ -1,13 +1,14 @@
 import main from '../assets/images/main.svg';
 import logo from '../assets/images/favicon.ico';
+import Wrapper from '../assets/wrappers/LandingPage';
 
 const Landing = () => {
   return (
-    <main>
+    <Wrapper>
         <nav>
             <img src={logo} alt='landing logo' className='logo'/>
         </nav>
-        <div className='container'>
+        <div className='container page'>
             <div className='info'>
                 <h1>
                     Welcome to the Writers' Forum.
@@ -19,10 +20,9 @@ const Landing = () => {
                 &nbsp;&nbsp;<span className='landing-span'>Or View All Of The </span>&nbsp;&nbsp;
                 <button className='btn btn-hero'> Completed Works </button>
             </div>
-            <p></p>
-            <img src={main} alt='event scene' className='img'/>
+            <img src={main} alt='event scene' className='img main-img'/>
         </div>
-    </main>
+    </Wrapper>
   )
 }
 export default Landing
