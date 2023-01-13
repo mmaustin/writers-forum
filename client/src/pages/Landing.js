@@ -1,7 +1,7 @@
 import main from '../assets/images/main.svg';
 import Wrapper from '../assets/wrappers/LandingPage';
 import { Logo } from '../components';
-//import {Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 const Landing = () => {
   return (
@@ -17,7 +17,7 @@ const Landing = () => {
                 <p>
                     Let's write amazing works together.
                 </p>
-                <button className='btn btn-hero'> Login/Register</button>
+                <Link to='/register' className='btn btn-hero'> Login/Register</Link>
                 &nbsp;&nbsp;<span className='landing-span'>Or View All Of The </span>&nbsp;&nbsp;
                 <button className='btn btn-hero small-screen-button' > Completed Works </button>
             </div>
