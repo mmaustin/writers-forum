@@ -11,7 +11,7 @@ const localState = {
   }
 
 const Register = () => {
-    const {showAlert} = useAppContext();
+    const {showAlert, isLoading} = useAppContext();
     const [values, setValues] = useState(localState)
 
     const onSubmit = (e) => {
@@ -40,7 +40,39 @@ const Register = () => {
 
   return (
     <Wrapper className="full-page">
-
+      <form className='form' onSubmit={onSubmit}>
+        <Logo/>
+        <h3>{values.isMember ? 'Login' : 'Register'}</h3>
+        {showAlert && <Alert/>}
+        {!values.isMember && (<FormRow
+            type='text'
+            name='name'
+            value={values.name}
+            handleChange={handleChange}
+          />)}
+          <FormRow
+            type='email'
+            name='email'
+            value={values.email}
+            handleChange={handleChange}
+          />
+          <FormRow
+            type='password'
+            name='password'
+            value={values.password}
+            handleChange={handleChange}
+          />
+        <p></p>
+        <button type="submit" className='btn btn-block' disabled={isLoading}>
+          Submit
+        </button>
+        <p>
+          {values.isMember ? 'Not a member yet?' : 'Already a member?'}
+          <button type='button' onClick={toggleMember} className='member-btn'>
+            {values.isMember ? 'Register' : 'Login'}
+          </button>
+        </p>
+      </form>
     </Wrapper>
   )
 }
