@@ -1,4 +1,10 @@
 import React, { useReducer, useContext } from 'react';
+import reducer from './reducer';
+
+import { 
+  DISPLAY_ALERT,
+  CLEAR_ALERT,
+} from './actions';
 
 const initialState = {
     isLoading: false,
@@ -9,10 +15,6 @@ const initialState = {
 
 const AppContext = React.createContext();
 
-
-const reducer = (state,action)=>{
-
-}
 
 const AppProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, initialState)
