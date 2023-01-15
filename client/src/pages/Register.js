@@ -11,17 +11,16 @@ const localState = {
   }
 
 const Register = () => {
-    const {showAlert, isLoading} = useAppContext();
+    const {showAlert, isLoading, displayAlert} = useAppContext();
     const [values, setValues] = useState(localState)
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log(e.target);
-        // const {name, email, password, isMember} = values;
-        // if(!email || !password || (!isMember && !name)){
-        //   displayAlert();
-        //   return
-        // }
+        const {name, email, password, isMember} = values;
+        if(!email || !password || (!isMember && !name)){
+          displayAlert();
+          return
+        }
         // const currentUser = {name, email, password};
         // if(isMember){
         //   loginUser(currentUser)
