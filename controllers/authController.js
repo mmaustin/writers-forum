@@ -1,13 +1,13 @@
 
 
 const register = async (req, res) => {
-    res.send(201).json({msg: 'user created'})
+    res.send({msg: 'user created'})
 }
 const login = async (req, res) => {
-    res.send(20).json({msg: 'user logged in'})
+    res.send({msg: 'user logged in'})
 }
 const updateUser = async (req, res) => {
-    res.send(200).json({msg: 'user updated'})
+    res.send({msg: 'user updated'})
 }
 
 export {
