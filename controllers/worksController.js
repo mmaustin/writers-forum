@@ -16,3 +16,11 @@ const updateWork = async (reg,res) => {
 const deleteWork = async (reg,res) => {
     res.send(200).json({msg: 'work deleted'});
 }
+
+export {
+    createWork,
+    getWork,
+    getAllWorks,
+    updateWork,
+    deleteWork
+}
