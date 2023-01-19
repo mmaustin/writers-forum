@@ -14,8 +14,8 @@ const initialState = {
     showAlert: false,
     alertText: '',
     alertType: '',
-    user: '',
-    token: '',
+    user: null,
+    token: null,
 }
 
 const AppContext = React.createContext();
