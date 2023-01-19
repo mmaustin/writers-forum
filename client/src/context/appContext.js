@@ -37,7 +37,22 @@ const AppProvider = ({children}) => {
   }
 
   const registerUser = async (currentUser) => {
-    console.log(currentUser);
+    dispatch({type: REGISTER_USER_BEGIN});
+    try {
+        const {data} = await axios.post('/api/v1/auth/register', currentUser)
+        const {user, token} = data;
+        dispatch({
+            type: REGISTER_USER_SUCCESS,
+            payload: {user, token}
+        });
+        //addUserToLocalStorage({ user, token })           
+    } catch (error) {
+        dispatch({
+            type: REGISTER_USER_ERROR,
+            payload: {msg: error.response.data.msg}
+        });
+    }
+  clearAlert();
   }
 
 
