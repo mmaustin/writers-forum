@@ -11,7 +11,7 @@ const localState = {
   }
 
 const Register = () => {
-    const {showAlert, isLoading, displayAlert} = useAppContext();
+    const {showAlert, isLoading, displayAlert, registerUser} = useAppContext();
     const [values, setValues] = useState(localState)
 
     const onSubmit = (e) => {
@@ -21,11 +21,11 @@ const Register = () => {
           displayAlert();
           return
         }
-        // const currentUser = {name, email, password};
+        const currentUser = {name, email, password};
         // if(isMember){
         //   loginUser(currentUser)
         // } else {
-        //  registerUser(currentUser);
+          registerUser(currentUser);
         // }
       }
       
