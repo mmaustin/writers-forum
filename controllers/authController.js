@@ -43,6 +43,7 @@ const login = async (req, res) => {
   user.password = undefined
   res.status(StatusCodes.OK).json({ user, token})
 }
+
 const updateUser = async (req, res) => {
     res.send({msg: 'user updated'})
 }
