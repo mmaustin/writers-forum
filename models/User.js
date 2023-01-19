@@ -28,9 +28,9 @@ const UserSchema = new mongoose.Schema({
   },
   favoriteGenre: {
     type: String,
-    required: [true, 'Please state your favorite genre'],
     trim: true,
     maxlength: 25,
+    default: 'I like them all!'
   }
 })
 

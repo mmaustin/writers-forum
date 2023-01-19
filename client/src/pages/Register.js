@@ -7,7 +7,6 @@ import {useNavigate} from 'react-router-dom'
 const localState = {
     name: '',
     email: '',
-    favoriteGenre: '',
     password: '',
     isMember: true,
   }
@@ -20,12 +19,12 @@ const Register = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        const {name, email, favoriteGenre, password, isMember} = values;
-        if(!email || !password || !favoriteGenre || (!isMember && !name)){
+        const {name, email, password, isMember} = values;
+        if(!email || !password || (!isMember && !name)){
           displayAlert();
           return
         }
-        const currentUser = {name, email, favoriteGenre, password};
+        const currentUser = {name, email, password};
         if(isMember){
           loginUser(currentUser)
         } else {
@@ -61,14 +60,6 @@ const Register = () => {
             value={values.name}
             handleChange={handleChange}
           />)}
-        {!values.isMember && (<FormRow  
-              labelText='Favorite Genre'
-              type='text'
-              name='favoriteGenre'
-              value={values.favoriteGenre}
-              handleChange={handleChange}
-            />)
-          }
           <FormRow
             type='email'
             name='email'
