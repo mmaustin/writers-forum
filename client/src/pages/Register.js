@@ -13,7 +13,7 @@ const localState = {
   }
 
 const Register = () => {
-    const {showAlert, isLoading, displayAlert, registerUser, user} = useAppContext();
+    const {showAlert, isLoading, displayAlert, registerUser, loginUser, user} = useAppContext();
     const navigate = useNavigate();
 
     const [values, setValues] = useState(localState)
@@ -26,11 +26,11 @@ const Register = () => {
           return
         }
         const currentUser = {name, email, favoriteGenre, password};
-        // if(isMember){
-        //   loginUser(currentUser)
-        // } else {
+        if(isMember){
+          loginUser(currentUser)
+        } else {
           registerUser(currentUser);
-        // }
+        }
       }
       
       const toggleMember = () => {
@@ -61,17 +61,18 @@ const Register = () => {
             value={values.name}
             handleChange={handleChange}
           />)}
+        {!values.isMember && (<FormRow  
+              labelText='Favorite Genre'
+              type='text'
+              name='favoriteGenre'
+              value={values.favoriteGenre}
+              handleChange={handleChange}
+            />)
+          }
           <FormRow
             type='email'
             name='email'
             value={values.email}
-            handleChange={handleChange}
-          />
-          <FormRow
-            labelText='Favorite Genre'
-            type='text'
-            name='favoriteGenre'
-            value={values.favoriteGenre}
             handleChange={handleChange}
           />
           <FormRow
