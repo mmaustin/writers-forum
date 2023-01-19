@@ -4,6 +4,9 @@ import reducer from './reducer';
 import { 
   DISPLAY_ALERT,
   CLEAR_ALERT,
+  REGISTER_USER_BEGIN,
+  REGISTER_USER_SUCCESS,
+  REGISTER_USER_ERROR,  
 } from './actions';
 
 const initialState = {
@@ -11,6 +14,8 @@ const initialState = {
     showAlert: false,
     alertText: '',
     alertType: '',
+    user: '',
+    token: '',
 }
 
 const AppContext = React.createContext();
