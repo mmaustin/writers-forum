@@ -6,6 +6,7 @@ import Wrapper from '../assets/wrappers/RegisterPage';
 const localState = {
     name: '',
     email: '',
+    favoriteGenre: '',
     password: '',
     isMember: true,
   }
@@ -16,12 +17,12 @@ const Register = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        const {name, email, password, isMember} = values;
-        if(!email || !password || (!isMember && !name)){
+        const {name, email, favoriteGenre, password, isMember} = values;
+        if(!email || !password || !favoriteGenre || (!isMember && !name)){
           displayAlert();
           return
         }
-        const currentUser = {name, email, password};
+        const currentUser = {name, email, favoriteGenre, password};
         // if(isMember){
         //   loginUser(currentUser)
         // } else {
@@ -53,6 +54,13 @@ const Register = () => {
             type='email'
             name='email'
             value={values.email}
+            handleChange={handleChange}
+          />
+          <FormRow
+            labelText='Favorite Genre'
+            type='text'
+            name='favoriteGenre'
+            value={values.favoriteGenre}
             handleChange={handleChange}
           />
           <FormRow
