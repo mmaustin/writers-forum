@@ -1,3 +1,4 @@
+import ProtectedRoute from "../ProtectedRoute";
 import AddWork from "./AddWork";
 import AllMyWorks from "./AllMyWorks";
 import Profile from "./Profile";
@@ -7,5 +8,6 @@ export {
     AddWork,
     AllMyWorks,
     Profile,
-    SharedLayout
+    SharedLayout,
+    ProtectedRoute
 }
