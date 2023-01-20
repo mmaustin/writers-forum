@@ -7,8 +7,8 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/'>
-          <Route path='my-works' element={<AllMyWorks/>} />
+        <Route path='/' element={<SharedLayout/>}>
+          <Route index element={<AllMyWorks/>} />
           <Route path='add-work' element={<AddWork/>} />
           <Route path='profile' element={<Profile/>} />
         </Route>
