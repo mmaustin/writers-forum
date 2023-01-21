@@ -36,6 +36,11 @@ const AppProvider = ({children}) => {
   const addUserToLocalStorage = ({ user, token }) => {
     localStorage.setItem('user', JSON.stringify(user))
     localStorage.setItem('token', token)
+  }
+
+  const removeUserFromLocalStorage = () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
   }  
 
   const displayAlert = () => {
@@ -85,7 +90,16 @@ const AppProvider = ({children}) => {
         });
     }
     clearAlert();
-}  
+  }
+  
+  const toggleSidebar = () => {
+    dispatch({ type: TOGGLE_SIDEBAR })
+  }    
+
+  const logoutUser = () => {
+    dispatch({ type: LOGOUT_USER })
+    removeUserFromLocalStorage()
+  }
 
 
   return(
@@ -94,7 +108,9 @@ const AppProvider = ({children}) => {
         ...state,
         displayAlert,
         registerUser,
-        loginUser
+        loginUser,
+        toggleSidebar,
+        logoutUser,
       }}
     >
       {children}
