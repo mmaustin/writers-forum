@@ -1,7 +1,7 @@
 import Wrapper from '../assets/wrappers/SmallSideBar';
 import { FaTimes } from 'react-icons/fa';
 import Logo from './Logo';
-import NavLinks from './NavLinks';
+import Navlinks from './Navlinks';
 import {useAppContext} from '../context/appContext';
 
 const SmallSideBar = () => {
@@ -20,7 +20,7 @@ const SmallSideBar = () => {
           <header>
             <Logo />
           </header>
-          <NavLinks toggleSidebar={toggleSidebar} />
+          <Navlinks toggleSidebar={toggleSidebar} />
         </div>
       </div>
     </Wrapper>
