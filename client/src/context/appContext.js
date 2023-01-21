@@ -10,7 +10,9 @@ import {
   REGISTER_USER_ERROR,
   LOGIN_USER_BEGIN,
   LOGIN_USER_SUCCESS,
-  LOGIN_USER_ERROR,    
+  LOGIN_USER_ERROR,
+  LOGOUT_USER,
+  TOGGLE_SIDEBAR,      
 } from './actions';
 
 const token = localStorage.getItem('token');
