@@ -33,6 +33,34 @@ const AppContext = React.createContext();
 const AppProvider = ({children}) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
+  const authFetch = axios.create({
+    baseURL: '/api/v1',
+  })
+  // request
+
+  authFetch.interceptors.request.use(
+    (config) => {
+      config.headers['Authorization'] = `Bearer ${state.token}`
+      return config
+    },
+    (error) => {
+      return Promise.reject(error)
+    }
+  )
+  // response
+
+  authFetch.interceptors.response.use(
+    (response) => {
+      return response
+    },
+    (error) => {
+      if (error.response.status === 401) {
+        logoutUser()
+      }
+      return Promise.reject(error)
+    }
+  )  
+
   const addUserToLocalStorage = ({ user, token }) => {
     localStorage.setItem('user', JSON.stringify(user))
     localStorage.setItem('token', token)
