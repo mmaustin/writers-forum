@@ -130,7 +130,21 @@ const AppProvider = ({children}) => {
   }
 
   const updateUser = async(currentUser) => {
-    console.log(currentUser);
+    //dispatch({type: UPDATE_USER_BEGIN})
+    try {
+        const {data} = await authFetch.patch('/auth/updateUser', currentUser);
+        const {user, token} = data;
+        //dispatch({type: UPDATE_USER_SUCCESS, payload: {user, token}})
+        addUserToLocalStorage({ user, token });
+    } catch (error) {
+        if (error.response.status !== 401) {
+            dispatch({
+              //type: UPDATE_USER_ERROR,
+              payload: { msg: error.response.data.msg },
+            })
+        }            
+    }
+    clearAlert();
   }
 
 
