@@ -11,7 +11,10 @@ import {
     TOGGLE_SIDEBAR,
     UPDATE_USER_BEGIN,
     UPDATE_USER_SUCCESS,
-    UPDATE_USER_ERROR,         
+    UPDATE_USER_ERROR,
+    GRAB_USERS_BEGIN,
+    GRAB_USERS_SUCCESS,
+    GRAB_USERS_ERROR,         
 } from './actions';
 
 import {initialState} from './appContext';
@@ -113,6 +116,26 @@ const reducer = (state, action) => {
         alertType: 'danger',
         alertText: action.payload.msg,
       }
+    }
+    
+    if(action.type === GRAB_USERS_BEGIN){
+      return {...state, isLoading: true};
+    }
+    if(action.type === GRAB_USERS_SUCCESS){
+      return {
+        ...state,
+        isLoading: false,
+        allUsers: action.payload.allUsers
+      }
+    }
+    if(action.type === GRAB_USERS_ERROR){
+      return {
+        ...state,
+        isLoading: false,
+        showAlert: true,
+        alertType: 'danger',
+        alertText: action.payload.msg
+      };
     }    
 
     throw new Error(`no such action: ${action.type}`);
