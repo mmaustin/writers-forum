@@ -1,4 +1,4 @@
-import React, { useReducer, useContext, useEffect } from 'react';
+import React, { useReducer, useContext} from 'react';
 import reducer from './reducer';
 import axios from 'axios';
 
@@ -130,7 +130,7 @@ const AppProvider = ({children}) => {
   const fetchUsers = async () => {
     dispatch({type: GRAB_USERS_BEGIN})
     try {
-      const data = await axios('/api/v1/auth/allUsers');
+      const {data} = await axios('/api/v1/auth/allUsers');
       const {allUsers} = data;
       dispatch({
         type: GRAB_USERS_SUCCESS,
@@ -143,12 +143,6 @@ const AppProvider = ({children}) => {
       })
     }
   }
-
-  useEffect(() => {
-    fetchUsers()
-  }, [])
-  console.log(state.allUsers);
-  
   
   const toggleSidebar = () => {
     dispatch({ type: TOGGLE_SIDEBAR })
@@ -188,6 +182,7 @@ const AppProvider = ({children}) => {
         toggleSidebar,
         logoutUser,
         updateUser,
+        fetchUsers,
       }}
     >
       {children}
