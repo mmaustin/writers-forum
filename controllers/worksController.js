@@ -1,8 +1,8 @@
 import Work from "../models/Work.js";
 import { StatusCodes } from 'http-status-codes';
-import { BadRequestError, NotFoundError } from '../errors/index.js';
+import { BadRequestError, NotFoundError } from '../error/index.js';
 
-const createWork = async (reg,res) => {
+const createWork = async (req,res) => {
     const {title, genre, content, contributions} = req.body;
 
     if(!title || !genre || !content || !contributions){
