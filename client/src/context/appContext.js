@@ -1,4 +1,4 @@
-import React, { useReducer, useContext } from 'react';
+import React, { useReducer, useContext, useEffect } from 'react';
 import reducer from './reducer';
 import axios from 'axios';
 
@@ -16,6 +16,9 @@ import {
   UPDATE_USER_BEGIN,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_ERROR,
+  GRAB_USERS_BEGIN,
+  GRAB_USERS_SUCCESS,
+  GRAB_USERS_ERROR,  
 } from './actions';
 
 const token = localStorage.getItem('token');
@@ -123,6 +126,29 @@ const AppProvider = ({children}) => {
     }
     clearAlert();
   }
+
+  const fetchUsers = async () => {
+    dispatch({type: GRAB_USERS_BEGIN})
+    try {
+      const data = await axios('/api/v1/auth/allUsers');
+      const {allUsers} = data;
+      dispatch({
+        type: GRAB_USERS_SUCCESS,
+        payload: {allUsers}
+      });
+    } catch (error) {
+      dispatch({
+        type: GRAB_USERS_ERROR,
+        payload: {msg: error.response.data.msg}
+      })
+    }
+  }
+
+  useEffect(() => {
+    fetchUsers()
+  }, [])
+  console.log(state.allUsers);
+  
   
   const toggleSidebar = () => {
     dispatch({ type: TOGGLE_SIDEBAR })
