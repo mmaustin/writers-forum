@@ -28,6 +28,7 @@ const initialState = {
     alertType: '',
     user: user ? JSON.parse(user) : null,
     token: token,
+    allUsers: [],
 }
 
 const AppContext = React.createContext();

@@ -44,6 +44,11 @@ const login = async (req, res) => {
   res.status(StatusCodes.OK).json({ user, token})
 }
 
+const fetchUsers = async (reg, res) => {
+  const allUsers = await User.find();
+  res.status(StatusCodes.OK).json({allUsers});
+}
+
 const updateUser = async (req, res) => {
   const { email, name, favoriteGenre} = req.body
   if (!email || !name || !favoriteGenre) {
@@ -65,5 +70,6 @@ const updateUser = async (req, res) => {
 export {
     register,
     login,
+    fetchUsers,
     updateUser
 }
