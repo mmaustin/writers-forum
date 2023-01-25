@@ -180,6 +180,38 @@ const AppProvider = ({children}) => {
     clearAlert();
   }
 
+  const handleChange =({name, value}) =>{
+    dispatch({
+        type: HANDLE_CHANGE,
+        payload: {name, value}
+    });
+  }
+
+  const clearValues = () => {
+      dispatch({type: CLEAR_VALUES})
+  }
+
+  const createWork = async () => {
+      dispatch({ type: CREATE_WORK_BEGIN })
+      try {
+        const { title, genre, content, contributions} = state
+        await authFetch.post('/works', {
+          title,
+          genre,
+          content,
+          contributions
+        })
+        dispatch({ type: CREATE_WORK_SUCCESS })
+        dispatch({ type: CLEAR_VALUES })
+      } catch (error) {
+        if (error.response.status === 401) return
+        dispatch({
+          type: CREATE_WORK_ERROR,
+          payload: { msg: error.response.data.msg },
+        })
+      }
+      clearAlert()       
+  }  
 
   return(
     <AppContext.Provider
@@ -192,6 +224,9 @@ const AppProvider = ({children}) => {
         logoutUser,
         updateUser,
         fetchUsers,
+        handleChange,
+        clearValues,
+        createWork
       }}
     >
       {children}
