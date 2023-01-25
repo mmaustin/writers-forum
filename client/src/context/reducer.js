@@ -141,6 +141,50 @@ const reducer = (state, action) => {
         alertType: 'danger',
         alertText: action.payload.msg
       };
+    }
+    if (action.type === HANDLE_CHANGE) {
+      return {
+        ...state,
+        [action.payload.name]: action.payload.value,
+      }
+    }
+    
+    if (action.type === CLEAR_VALUES) {
+      const initialState = {
+        isEditing: false,
+        title: '',
+        genre: '',
+        content: '',
+        contributions: 0,
+      }
+  
+      return {
+        ...state,
+        ...initialState,
+      }
+    }
+    
+    if (action.type === CREATE_WORK_BEGIN) {
+      return { ...state, isLoading: true }
+    }    
+
+    if (action.type === CREATE_WORK_SUCCESS) {
+      return {
+        ...state,
+        isLoading: false,
+        showAlert: true,
+        alertType: 'success',
+        alertText: 'New Work Created!',
+      }
+    }
+    if (action.type === CREATE_WORK_ERROR) {
+      return {
+        ...state,
+        isLoading: false,
+        showAlert: true,
+        alertType: 'danger',
+        alertText: action.payload.msg,
+      }
     }    
 
     throw new Error(`no such action: ${action.type}`);
