@@ -44,7 +44,7 @@ const login = async (req, res) => {
   res.status(StatusCodes.OK).json({ user, token})
 }
 
-const fetchUsers = async (reg, res) => {
+const fetchUsers = async (req, res) => {
   const allUsers = await User.find();
   res.status(StatusCodes.OK).json({allUsers});
 }

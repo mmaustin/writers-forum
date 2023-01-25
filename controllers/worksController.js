@@ -13,16 +13,17 @@ const createWork = async (req,res) => {
     res.status(StatusCodes.CREATED).json({work});
 }
 
-const getWork = async (reg,res) => {
+const getWork = async (req,res) => {
     res.send({msg: 'work retrieved'});
 }
-const getAllWorks = async (reg,res) => {
-    res.send({msg: 'works retrieved'});
+const getAllWorks = async (req,res) => {
+    const allWorks = await Work.find();
+    res.status(StatusCodes.OK).json({allWorks});
 }
-const updateWork = async (reg,res) => {
+const updateWork = async (req,res) => {
     res.send({msg: 'work updated'});
 }
-const deleteWork = async (reg,res) => {
+const deleteWork = async (req,res) => {
     res.send({msg: 'work deleted'});
 }
 
