@@ -4,7 +4,6 @@ const WorkSchema = new mongoose.Schema({
     title: {
         type: String,
         required: [true, 'Please provide a title.'],
-        maxLength: 40,
         trim: true,
     },
     genre: {
@@ -16,13 +15,11 @@ const WorkSchema = new mongoose.Schema({
     content: {
         type: String,
         required: [true, 'Provide your work\'s first entry.'],
-        maxLength: 40,
         trim: true,
     },
     contributions: {
         type: Number,
         required: [true, 'How many contributions does your work have?'],
-        maxLength: 40,
         trim: true,
     },
     createdBy: {
