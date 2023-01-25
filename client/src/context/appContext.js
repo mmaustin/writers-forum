@@ -32,6 +32,10 @@ const initialState = {
     user: user ? JSON.parse(user) : null,
     token: token,
     allUsers: [],
+    title: '',
+    genre: '',
+    content: '',
+    contributions: 0,
 }
 
 const AppContext = React.createContext();
