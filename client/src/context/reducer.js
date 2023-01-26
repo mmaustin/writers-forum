@@ -19,7 +19,9 @@ import {
     CLEAR_VALUES,
     CREATE_WORK_BEGIN,
     CREATE_WORK_SUCCESS,
-    CREATE_WORK_ERROR,              
+    CREATE_WORK_ERROR,
+    GET_WORKS_BEGIN,
+    GET_WORKS_SUCCESS,                  
 } from './actions';
 
 import {initialState} from './appContext';
@@ -185,7 +187,18 @@ const reducer = (state, action) => {
         alertType: 'danger',
         alertText: action.payload.msg,
       }
-    }    
+    }
+    if (action.type === GET_WORKS_BEGIN) {
+      return { ...state, isLoading: true, showAlert: false }
+    }
+    if (action.type === GET_WORKS_SUCCESS) {
+      return {
+        ...state,
+        isLoading: false,
+        works: action.payload.works,
+        totalWorks: action.payload.totalWorks,
+      }
+    }        
 
     throw new Error(`no such action: ${action.type}`);
 }

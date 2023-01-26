@@ -23,7 +23,9 @@ import {
   CLEAR_VALUES,
   CREATE_WORK_BEGIN,
   CREATE_WORK_SUCCESS,
-  CREATE_WORK_ERROR,   
+  CREATE_WORK_ERROR,
+  GET_WORKS_BEGIN,
+  GET_WORKS_SUCCESS,     
 } from './actions';
 
 const token = localStorage.getItem('token');
@@ -41,7 +43,7 @@ const initialState = {
     genre: '',
     content: '',
     contributions: 0,
-    allWorks: [],
+    works: [],
     totalWorks: 0,
 }
 
@@ -213,7 +215,23 @@ const AppProvider = ({children}) => {
         })
       }
       clearAlert()       
-  }  
+  }
+  
+  const getWorks = async() => {
+    let url = `/works`;
+    dispatch({type: GET_WORKS_BEGIN});
+    try {
+        const {data} = await authFetch(url);
+        const {works, totalWorks} = data;
+        dispatch({
+            type: GET_WORKS_SUCCESS,
+            payload: {works, totalWorks}
+        })
+    } catch (error) {
+        logoutUser();
+    }
+    clearAlert();
+}  
 
   return(
     <AppContext.Provider
@@ -228,7 +246,8 @@ const AppProvider = ({children}) => {
         fetchUsers,
         handleChange,
         clearValues,
-        createWork
+        createWork,
+        getWorks
       }}
     >
       {children}
