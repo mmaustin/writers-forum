@@ -18,7 +18,7 @@ const getWork = async (req,res) => {
 }
 const getAllWorks = async (req,res) => {
     const allWorks = await Work.find();
-    res.status(StatusCodes.OK).json({allWorks});
+    res.status(StatusCodes.OK).json({allWorks, totalWorks: allWorks.length});
 }
 const updateWork = async (req,res) => {
     res.send({msg: 'work updated'});

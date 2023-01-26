@@ -41,6 +41,8 @@ const initialState = {
     genre: '',
     content: '',
     contributions: 0,
+    allWorks: [],
+    totalWorks: 0,
 }
 
 const AppContext = React.createContext();
