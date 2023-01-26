@@ -25,7 +25,7 @@ const WorkSchema = new mongoose.Schema({
     createdBy: {
         type: mongoose.Types.ObjectId,
         ref: 'User',
-        required: [true, 'Please provide an auther.'],
+        required: [true, 'Please provide an author.'],
     },
     complete: {
         type: Boolean,
