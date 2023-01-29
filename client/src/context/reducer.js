@@ -22,7 +22,7 @@ import {
     CREATE_WORK_ERROR,
     GET_WORKS_BEGIN,
     GET_WORKS_SUCCESS,
-    SET_EDIT_EVENT                     
+    SET_EDIT_EVENT,                     
 } from './actions';
 
 import {initialState} from './appContext';
@@ -199,7 +199,50 @@ const reducer = (state, action) => {
         works: action.payload.allWorks,
         totalWorks: action.payload.totalWorks,
       }
-    }        
+    }
+    
+    if (action.type === SET_EDIT_EVENT) {
+      const work = state.works.find((work) => work._id === action.payload.id)
+      const { _id, title, genre, content, contributions } = work
+      return {
+        ...state,
+        isEditing: true,
+        editEventId: _id,
+        title,
+        genre,
+        content,
+        contributions
+      }
+    }
+
+    if (action.type === DELETE_WORK_BEGIN) {
+      return { ...state, isLoading: true }
+    }
+
+    if (action.type === EDIT_WORK_BEGIN) {
+      return {
+        ...state,
+        isLoading: true,
+      }
+    }
+    if (action.type === EDIT_WORK_SUCCESS) {
+      return {
+        ...state,
+        isLoading: false,
+        showAlert: true,
+        alertType: 'success',
+        alertText: 'Work Updated!',
+      }
+    }
+    if (action.type === EDIT_WORK_ERROR) {
+      return {
+        ...state,
+        isLoading: false,
+        showAlert: true,
+        alertType: 'danger',
+        alertText: action.payload.msg,
+      }
+    }     
 
     throw new Error(`no such action: ${action.type}`);
 }
