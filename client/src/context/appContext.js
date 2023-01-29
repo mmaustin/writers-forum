@@ -238,7 +238,46 @@ const AppProvider = ({children}) => {
         logoutUser();
     }
     clearAlert();
-}  
+  }
+
+    const setEditWork = (id) => {
+        dispatch({type: SET_EDIT_WORK, payload: {id} });
+    }
+
+    const editWork = async () => {
+      console.log('edit work');
+        // dispatch({ type: EDIT_WORK_BEGIN })
+
+        // try {
+        //   const { title, genre, content, contributions} = state
+        //   await authFetch.patch(`/works/${state.editWorkId}`, {
+        //     title,
+        //     genre,
+        //     content,
+        //     contributions
+        //   })
+        //   dispatch({ type: EDIT_WORK_SUCCESS })
+        //   dispatch({ type: CLEAR_VALUES })
+        // } catch (error) {
+        //   if (error.response.status === 401) return
+        //   dispatch({
+        //     type: EDIT_WORK_ERROR,
+        //     payload: { msg: error.response.data.msg },
+        //   })
+        // }
+        // clearAlert()
+    }
+
+    const deleteWork = async (workId) => {
+      console.log(`${workId}`);
+        // dispatch({ type: DELETE_WORK_BEGIN })
+        // try {
+        //   await authFetch.delete(`/works/${workId}`)
+        //   getWorks()
+        // } catch (error) {
+        //   logoutUser()
+        // }
+    }  
 
   return(
     <AppContext.Provider
@@ -254,7 +293,10 @@ const AppProvider = ({children}) => {
         handleChange,
         clearValues,
         createWork,
-        getWorks
+        getWorks,
+        setEditWork,
+        editWork,
+        deleteWork
       }}
     >
       {children}
