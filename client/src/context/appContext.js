@@ -25,7 +25,8 @@ import {
   CREATE_WORK_SUCCESS,
   CREATE_WORK_ERROR,
   GET_WORKS_BEGIN,
-  GET_WORKS_SUCCESS,     
+  GET_WORKS_SUCCESS,
+  SET_EDIT_EVENT       
 } from './actions';
 
 const token = localStorage.getItem('token');
@@ -45,6 +46,8 @@ const initialState = {
     contributions: 0,
     works: [],
     totalWorks: 0,
+    isEditing: false,
+    editWorkId: '',
 }
 
 const AppContext = React.createContext();

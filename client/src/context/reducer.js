@@ -21,7 +21,8 @@ import {
     CREATE_WORK_SUCCESS,
     CREATE_WORK_ERROR,
     GET_WORKS_BEGIN,
-    GET_WORKS_SUCCESS,                  
+    GET_WORKS_SUCCESS,
+    SET_EDIT_EVENT                     
 } from './actions';
 
 import {initialState} from './appContext';
