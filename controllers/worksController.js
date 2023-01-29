@@ -17,7 +17,7 @@ const getWork = async (req,res) => {
     res.send({msg: 'work retrieved'});
 }
 const getAllWorks = async (req,res) => {
-    const allWorks = await Work.find();
+    const allWorks = await Work.find({});
     res.status(StatusCodes.OK).json({allWorks, totalWorks: allWorks.length});
 }
 const updateWork = async (req,res) => {

@@ -1,6 +1,11 @@
+import { WorksContainer } from "../../components"
+
+
 const AllMyWorks = () => {
   return (
-    <h3>All My Works</h3>
+    <>
+      <WorksContainer/>
+    </>
   )
 }
 export default AllMyWorks

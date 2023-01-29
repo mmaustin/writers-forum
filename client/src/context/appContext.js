@@ -222,10 +222,10 @@ const AppProvider = ({children}) => {
     dispatch({type: GET_WORKS_BEGIN});
     try {
         const {data} = await authFetch(url);
-        const {works, totalWorks} = data;
+        const {allWorks, totalWorks} = data;
         dispatch({
             type: GET_WORKS_SUCCESS,
-            payload: {works, totalWorks}
+            payload: {allWorks, totalWorks}
         })
     } catch (error) {
         logoutUser();

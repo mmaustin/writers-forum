@@ -195,7 +195,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         isLoading: false,
-        works: action.payload.works,
+        works: action.payload.allWorks,
         totalWorks: action.payload.totalWorks,
       }
     }        
