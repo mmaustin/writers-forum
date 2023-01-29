@@ -26,7 +26,11 @@ import {
   CREATE_WORK_ERROR,
   GET_WORKS_BEGIN,
   GET_WORKS_SUCCESS,
-  SET_EDIT_EVENT       
+  SET_EDIT_WORK,
+  EDIT_WORK_BEGIN,
+  EDIT_WORK_SUCCESS,
+  EDIT_WORK_ERROR,
+  DELETE_WORK_BEGIN         
 } from './actions';
 
 const token = localStorage.getItem('token');

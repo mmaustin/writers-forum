@@ -22,7 +22,11 @@ import {
     CREATE_WORK_ERROR,
     GET_WORKS_BEGIN,
     GET_WORKS_SUCCESS,
-    SET_EDIT_EVENT,                     
+    SET_EDIT_WORK,
+    EDIT_WORK_BEGIN,
+    EDIT_WORK_SUCCESS,
+    EDIT_WORK_ERROR,
+    DELETE_WORK_BEGIN                        
 } from './actions';
 
 import {initialState} from './appContext';
@@ -201,13 +205,13 @@ const reducer = (state, action) => {
       }
     }
     
-    if (action.type === SET_EDIT_EVENT) {
+    if (action.type === SET_EDIT_WORK) {
       const work = state.works.find((work) => work._id === action.payload.id)
       const { _id, title, genre, content, contributions } = work
       return {
         ...state,
         isEditing: true,
-        editEventId: _id,
+        editWorkId: _id,
         title,
         genre,
         content,
