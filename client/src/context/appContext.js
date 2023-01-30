@@ -248,6 +248,7 @@ const AppProvider = ({children}) => {
     try {
       const {data} = await authFetch(`/works/${workId}`);
       const {work} = data;
+      console.log(work);
       dispatch({
         type: GET_WORK_SUCCESS,
         payload: {work}

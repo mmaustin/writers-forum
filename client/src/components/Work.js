@@ -22,7 +22,7 @@ const Work = ({_id, title, genre, content, contributions, createdBy, complete}) 
           <div className='actions'>
           <Link to='add-work' className='btn edit-btn' onClick={()=> setEditWork(_id)}>Edit</Link>
           <button className='btn delete-btn'type='button' onClick={()=> deleteWork(_id)}>Delete</button>
-          <button className='btn'type='button' onClick={()=> getWork(_id)}>Get Work</button>
+          <Link to='get-work' className='btn' onClick={()=> getWork(_id)}>Get Work</Link>
           </div>
         </footer>
         <main>
