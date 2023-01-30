@@ -1,6 +1,7 @@
 import Work from "../models/Work.js";
 import { StatusCodes } from 'http-status-codes';
 import { BadRequestError, NotFoundError } from '../error/index.js';
+import checkPermissions from "../utils/checkPermissions.js";
 
 const createWork = async (req,res) => {
     const {title, genre, content, contributions} = req.body;
@@ -43,7 +44,19 @@ const updateWork = async (req,res) => {
     res.status(StatusCodes.OK).json({ updatedWork })
 }
 const deleteWork = async (req,res) => {
-    res.send({msg: 'work deleted'});
+    const { id: workId } = req.params
+
+    const work = await Work.findOne({ _id: workId })
+  
+    if (!work) {
+      throw new NotFoundError(`No job with id :${workId}`)
+    }
+  
+    checkPermissions(req.user, work.createdBy)
+  
+    await work.remove()
+  
+    res.status(StatusCodes.OK).json({ msg: 'Success! Event removed' })
 }
 
 export {
