@@ -21,7 +21,26 @@ const getAllWorks = async (req,res) => {
     res.status(StatusCodes.OK).json({allWorks, totalWorks: allWorks.length});
 }
 const updateWork = async (req,res) => {
-    res.send({msg: 'work updated'});
+    const { id: workId } = req.params
+    const { title, genre, content, contributions } = req.body
+  
+    if (!title || !genre || !content || !contributions) {
+      throw new BadRequestError('Please provide all values')
+    }
+    const work = await Work.findOne({ _id: workId })
+  
+    if (!work) {
+      throw new NotFoundError(`No job with id :${workId}`)
+    }
+    
+    checkPermissions(req.user, work.createdBy)
+
+    const updatedWork = await Work.findOneAndUpdate({ _id: workId }, req.body, {
+      new: true,
+      runValidators: true,
+    })
+  
+    res.status(StatusCodes.OK).json({ updatedWork })
 }
 const deleteWork = async (req,res) => {
     res.send({msg: 'work deleted'});
