@@ -51,6 +51,7 @@ const initialState = {
     content: '',
     contributions: 0,
     works: [],
+    work: [],
     totalWorks: 0,
     isEditing: false,
     editWorkId: '',
@@ -242,6 +243,20 @@ const AppProvider = ({children}) => {
     clearAlert();
   }
 
+  const getWork = async (workId) => {
+    dispatch({type: GET_WORK_BEGIN});
+    try {
+      const {data} = await authFetch(`/works/${workId}`);
+      const {work} = data;
+      dispatch({
+        type: GET_WORK_SUCCESS,
+        payload: {work}
+      })
+    } catch (error) {
+        logoutUser();
+    }
+  }
+
     const setEditWork = (id) => {
         dispatch({type: SET_EDIT_WORK, payload: {id} });
     }
@@ -296,7 +311,8 @@ const AppProvider = ({children}) => {
         getWorks,
         setEditWork,
         editWork,
-        deleteWork
+        deleteWork,
+        getWork,
       }}
     >
       {children}

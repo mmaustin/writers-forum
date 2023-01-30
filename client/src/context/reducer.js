@@ -22,6 +22,8 @@ import {
     CREATE_WORK_ERROR,
     GET_WORKS_BEGIN,
     GET_WORKS_SUCCESS,
+    GET_WORK_BEGIN,
+    GET_WORK_SUCCESS,
     SET_EDIT_WORK,
     EDIT_WORK_BEGIN,
     EDIT_WORK_SUCCESS,
@@ -202,6 +204,16 @@ const reducer = (state, action) => {
         isLoading: false,
         works: action.payload.allWorks,
         totalWorks: action.payload.totalWorks,
+      }
+    }
+    if (action.type === GET_WORK_BEGIN) {
+      return { ...state, isLoading: true, showAlert: false }
+    }
+    if (action.type === GET_WORK_SUCCESS) {
+      return {
+        ...state,
+        isLoading: false,
+        work: action.payload.work,
       }
     }
     
