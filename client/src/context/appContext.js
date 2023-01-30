@@ -268,14 +268,13 @@ const AppProvider = ({children}) => {
     }
 
     const deleteWork = async (workId) => {
-      console.log(`${workId}`);
-        // dispatch({ type: DELETE_WORK_BEGIN })
-        // try {
-        //   await authFetch.delete(`/works/${workId}`)
-        //   getWorks()
-        // } catch (error) {
-        //   logoutUser()
-        // }
+        dispatch({ type: DELETE_WORK_BEGIN })
+        try {
+          await authFetch.delete(`/works/${workId}`)
+          getWorks()
+        } catch (error) {
+          logoutUser()
+        }
     }  
 
   return(
