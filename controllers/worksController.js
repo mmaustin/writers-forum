@@ -50,7 +50,7 @@ const getWork = async (req,res) => {
         throw new NotFoundError(`No work with id :${workId}`)
     }
 
-    res.status(StatusCodes.OK).json({ work });
+    res.status(StatusCodes.OK).json({ work: [work] });
 }
 
 const deleteWork = async (req,res) => {
