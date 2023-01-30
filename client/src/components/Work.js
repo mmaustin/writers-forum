@@ -1,12 +1,13 @@
 import { FaPlay, FaCalendarAlt } from 'react-icons/fa';
 import {IoMdPerson} from 'react-icons/io';
 import {FcClock} from 'react-icons/fc';
-//import { useAppContext } from "../context/appContext";
+import { useAppContext } from "../context/appContext";
 import Wrapper from '../assets/wrappers/Work';
 import WorkInfo from "./WorkInfo";
+import { Link } from 'react-router-dom';
 
 const Work = ({_id, title, genre, content, contributions, createdBy, complete}) => {
-
+  const {setEditWork, deleteWork} = useAppContext();
   return (
     <Wrapper>
       <div className='content'>
@@ -17,12 +18,12 @@ const Work = ({_id, title, genre, content, contributions, createdBy, complete}) 
           <WorkInfo icon={<FcClock />} text={complete} />
           <WorkInfo icon={<FcClock />} text={createdBy} />
         </div>        
-        {/* <footer>
+        <footer>
           <div className='actions'>
-          <Link to='add-event' className='btn edit-btn' onClick={()=> setEditEvent(_id)}>Edit</Link>
-          <button className='btn delete-btn'type='button' onClick={()=> deleteEvent(_id)}>Delete</button>
+          <Link to='add-work' className='btn edit-btn' onClick={()=> setEditWork(_id)}>Edit</Link>
+          <button className='btn delete-btn'type='button' onClick={()=> deleteWork(_id)}>Delete</button>
           </div>
-        </footer> */}
+        </footer>
         <main>
           <div className='main-icon'>{content.charAt(0)}</div>
           <div className='info'>

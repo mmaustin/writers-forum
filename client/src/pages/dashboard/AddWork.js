@@ -28,7 +28,6 @@ const AddWork = () => {
     <Wrapper>
       <form className='form'>
         <h3>{isEditing ? 'Edit Event' : 'Add Event'}</h3>
-        <h3>Add Work</h3>
         {showAlert && <Alert/>}
         <div className='form-center'>
           <FormRow
