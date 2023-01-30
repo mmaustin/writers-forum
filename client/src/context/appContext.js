@@ -245,27 +245,26 @@ const AppProvider = ({children}) => {
     }
 
     const editWork = async () => {
-      console.log('edit work');
-        // dispatch({ type: EDIT_WORK_BEGIN })
+        dispatch({ type: EDIT_WORK_BEGIN })
 
-        // try {
-        //   const { title, genre, content, contributions} = state
-        //   await authFetch.patch(`/works/${state.editWorkId}`, {
-        //     title,
-        //     genre,
-        //     content,
-        //     contributions
-        //   })
-        //   dispatch({ type: EDIT_WORK_SUCCESS })
-        //   dispatch({ type: CLEAR_VALUES })
-        // } catch (error) {
-        //   if (error.response.status === 401) return
-        //   dispatch({
-        //     type: EDIT_WORK_ERROR,
-        //     payload: { msg: error.response.data.msg },
-        //   })
-        // }
-        // clearAlert()
+        try {
+          const { title, genre, content, contributions} = state
+          await authFetch.patch(`/works/${state.editWorkId}`, {
+            title,
+            genre,
+            content,
+            contributions
+          })
+          dispatch({ type: EDIT_WORK_SUCCESS })
+          dispatch({ type: CLEAR_VALUES })
+        } catch (error) {
+          if (error.response.status === 401) return
+          dispatch({
+            type: EDIT_WORK_ERROR,
+            payload: { msg: error.response.data.msg },
+          })
+        }
+        clearAlert()
     }
 
     const deleteWork = async (workId) => {
