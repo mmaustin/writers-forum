@@ -11,12 +11,13 @@ const WorksContainer = () => {
     // eslint-disable-next-line
   }, [])
   
-
+  const userWorks = works.filter(work => work.createdBy === user._id)
+  console.log(user);
   if(isLoading){
     return <Loading center />
   }
 
-  if(works.length === 0){
+  if(userWorks.length === 0){
     return(
       <Wrapper>
         <h3>No Works To Display . . . </h3>
@@ -27,10 +28,10 @@ const WorksContainer = () => {
   return (
     <Wrapper>
       <h5>
-        {totalWorks} work{works.length > 1 && 's'} found
+        {totalWorks} work{userWorks.length > 1 && 's'} found
       </h5>
       <div className="events">
-        {works.map(work => {
+        {userWorks.map(work => {
           return <Work key={work._id} {...work}/>
         })}
       </div>

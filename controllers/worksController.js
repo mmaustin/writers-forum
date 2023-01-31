@@ -14,8 +14,8 @@ const createWork = async (req,res) => {
     res.status(StatusCodes.CREATED).json({work});
 }
 
-const getAllWorks = async (req,res) => {
-    const allWorks = await Work.find({});
+const getUserWorks = async (req,res) => {
+    const allWorks = await Work.find({createdBy: req.user.userId});
     res.status(StatusCodes.OK).json({allWorks, totalWorks: allWorks.length});
 }
 const updateWork = async (req,res) => {
@@ -72,7 +72,7 @@ const deleteWork = async (req,res) => {
 export {
     createWork,
     getWork,
-    getAllWorks,
+    getUserWorks,
     updateWork,
     deleteWork
 }
