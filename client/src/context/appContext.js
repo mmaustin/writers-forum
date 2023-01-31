@@ -46,6 +46,7 @@ const initialState = {
     user: user ? JSON.parse(user) : null,
     token: token,
     allUsers: [],
+    authorName: '',
     title: '',
     genre: '',
     content: '',
@@ -208,8 +209,9 @@ const AppProvider = ({children}) => {
   const createWork = async () => {
       dispatch({ type: CREATE_WORK_BEGIN })
       try {
-        const { title, genre, content, contributions} = state
+        const {authorName, title, genre, content, contributions} = state
         await authFetch.post('/works', {
+          authorName,
           title,
           genre,
           content,
@@ -265,8 +267,9 @@ const AppProvider = ({children}) => {
         dispatch({ type: EDIT_WORK_BEGIN })
 
         try {
-          const { title, genre, content, contributions} = state
+          const {authorName, title, genre, content, contributions} = state
           await authFetch.patch(`/works/${state.editWorkId}`, {
+            authorName,
             title,
             genre,
             content,

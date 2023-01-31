@@ -7,7 +7,6 @@ const GetWork = () => {
     <>
         {/* <h2>Do Not Refresh!!!</h2> */}
         {work.length === 0 ? (<Navigate to='/'/>) : <h3>{work.title}</h3> }
-        
     </>
   )
 }

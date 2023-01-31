@@ -1,6 +1,11 @@
 import mongoose from "mongoose";
 
 const WorkSchema = new mongoose.Schema({
+    authorName: {
+        type: String,
+        required: [true, 'Please provide the author\'s name'],
+        trim: true,
+    },
     title: {
         type: String,
         required: [true, 'Please provide a title.'],
