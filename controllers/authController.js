@@ -19,7 +19,8 @@ const register = async (req, res) => {
       user: {
         name: user.name,
         email: user.email,
-        favoriteGenre: user.favoriteGenre
+        favoriteGenre: user.favoriteGenre,
+        _id: user._id
       },
       token
     })

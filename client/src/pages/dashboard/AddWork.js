@@ -3,7 +3,7 @@ import {FormRow, Alert} from '../../components';
 import Wrapper from '../../assets/wrappers/DashboardFormPage';
 
 const AddWork = () => {
-  const {showAlert, displayAlert, isLoading, title, genre, content, contributions, handleChange, clearValues, createWork, isEditing, editWork } = useAppContext();
+  const {showAlert, displayAlert, isLoading, title, genre, content, contributions, handleChange, clearValues, createWork, isEditing, editWork, user} = useAppContext();
   
   const handleSubmit = e => {
     e.preventDefault();

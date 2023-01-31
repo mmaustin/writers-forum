@@ -5,7 +5,7 @@ const GetWork = () => {
     const {work} = useAppContext();
   return (
     <>
-        <h2>Do Not Refresh!!!</h2>
+        {/* <h2>Do Not Refresh!!!</h2> */}
         {work.length === 0 ? (<Navigate to='/'/>) : <h3>{work.title}</h3> }
         
     </>
