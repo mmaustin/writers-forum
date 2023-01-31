@@ -62,6 +62,7 @@ const reducer = (state, action) => {
         showAlert: true,
         user: action.payload.user,
         token: action.payload.token,
+        name: action.payload.name,
         alertType: 'success',
         alertText: 'User Created, redirecting . . . '
       }
@@ -84,6 +85,7 @@ const reducer = (state, action) => {
         showAlert: true,
         user: action.payload.user,
         token: action.payload.token,
+        name: action.payload.name,
         alertType: 'success',
         alertText: 'User logged in, redirecting . . . '
       }
@@ -105,7 +107,7 @@ const reducer = (state, action) => {
     }      
     
     if(action.type === LOGOUT_USER){
-      return {...initialState, user: null, token: null}
+      return {...initialState, user: null, token: null, name: ''}
     }
 
     if (action.type === UPDATE_USER_BEGIN) {
@@ -117,6 +119,7 @@ const reducer = (state, action) => {
         isLoading: false,
         token: action.payload.token,
         user: action.payload.user,
+        name: action.payload.name,
         showAlert: true,
         alertType: 'success',
         alertText: 'User Profile Updated!',
