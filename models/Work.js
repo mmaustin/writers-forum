@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const WorkSchema = new mongoose.Schema({
-    authorName: {
+    name: {
         type: String,
         required: [true, 'Please provide the author\'s name'],
         trim: true,

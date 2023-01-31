@@ -4,9 +4,9 @@ import { BadRequestError, NotFoundError } from '../error/index.js';
 import checkPermissions from "../utils/checkPermissions.js";
 
 const createWork = async (req,res) => {
-    const {title, genre, content, contributions, authorName} = req.body;
+    const {title, genre, content, contributions, name} = req.body;
 
-    if(!title || !genre || !content || !contributions || !authorName){
+    if(!title || !genre || !content || !contributions || !name){
         throw new BadRequestError('Please provide all values');
     }
     req.body.createdBy = req.user.userId;
@@ -20,9 +20,9 @@ const getUserWorks = async (req,res) => {
 }
 const updateWork = async (req,res) => {
     const { id: workId } = req.params
-    const {authorName, title, genre, content, contributions } = req.body
+    const {name, title, genre, content, contributions } = req.body
     
-    if (!authorName || !title || !genre || !content || !contributions) {
+    if (!name || !title || !genre || !content || !contributions) {
         throw new BadRequestError('Please provide all values')
     }
     const work = await Work.findOne({ _id: workId })

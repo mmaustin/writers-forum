@@ -32,6 +32,12 @@ const AddWork = () => {
         <div className='form-center'>
           <FormRow
             type='text'
+            name='name'
+            value={user.name}
+            handleChange={handleEventInput}
+          />
+          <FormRow
+            type='text'
             name='title'
             value={title}
             handleChange={handleEventInput}

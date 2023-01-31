@@ -22,7 +22,8 @@ const register = async (req, res) => {
         favoriteGenre: user.favoriteGenre,
         _id: user._id
       },
-      token
+      token,
+      name: user.name
     })
 }
 
@@ -42,7 +43,7 @@ const login = async (req, res) => {
   }
   const token = user.createJWT()
   user.password = undefined
-  res.status(StatusCodes.OK).json({ user, token})
+  res.status(StatusCodes.OK).json({ user, token, name: user.name})
 }
 
 const fetchUsers = async (req, res) => {
@@ -65,7 +66,7 @@ const updateUser = async (req, res) => {
 
   const token = user.createJWT()
 
-  res.status(StatusCodes.OK).json({ user, token})
+  res.status(StatusCodes.OK).json({ user, token, name: user.name})
 }
 
 export {

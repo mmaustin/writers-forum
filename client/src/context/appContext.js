@@ -37,6 +37,7 @@ import {
 
 const token = localStorage.getItem('token');
 const user = localStorage.getItem('user');
+const name = localStorage.getItem('name');
 
 const initialState = {
     isLoading: false,
@@ -46,7 +47,7 @@ const initialState = {
     user: user ? JSON.parse(user) : null,
     token: token,
     allUsers: [],
-    authorName: '',
+    name: name || '',
     title: '',
     genre: '',
     content: '',
@@ -92,14 +93,16 @@ const AppProvider = ({children}) => {
     }
   )  
 
-  const addUserToLocalStorage = ({ user, token }) => {
+  const addUserToLocalStorage = ({ user, token, name }) => {
     localStorage.setItem('user', JSON.stringify(user))
     localStorage.setItem('token', token)
+    localStorage.setItem('name', name)
   }
 
   const removeUserFromLocalStorage = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('user')
+    localStorage.removeItem('name')
   }  
 
   const displayAlert = () => {
@@ -117,12 +120,12 @@ const AppProvider = ({children}) => {
     dispatch({type: REGISTER_USER_BEGIN});
     try {
         const {data} = await axios.post('/api/v1/auth/register', currentUser)
-        const {user, token} = data;
+        const {user, token, name} = data;
         dispatch({
             type: REGISTER_USER_SUCCESS,
-            payload: {user, token}
+            payload: {user, token, name}
         });
-        addUserToLocalStorage({ user, token })           
+        addUserToLocalStorage({ user, token, name })           
     } catch (error) {
         dispatch({
             type: REGISTER_USER_ERROR,
@@ -136,12 +139,12 @@ const AppProvider = ({children}) => {
     dispatch({type: LOGIN_USER_BEGIN});
     try {
         const {data} = await axios.post('/api/v1/auth/login', currentUser)
-        const {user, token} = data;
+        const {user, token, name} = data;
         dispatch({
             type: LOGIN_USER_SUCCESS,
-            payload: {user, token}
+            payload: {user, token, name}
         });
-        addUserToLocalStorage({ user, token })            
+        addUserToLocalStorage({ user, token, name })            
     } catch (error) {
         dispatch({
             type: LOGIN_USER_ERROR,
@@ -181,9 +184,9 @@ const AppProvider = ({children}) => {
     dispatch({type: UPDATE_USER_BEGIN})
     try {
         const {data} = await authFetch.patch('/auth/updateUser', currentUser);
-        const {user, token} = data;
-        dispatch({type: UPDATE_USER_SUCCESS, payload: {user, token}})
-        addUserToLocalStorage({ user, token });
+        const {user, token, name} = data;
+        dispatch({type: UPDATE_USER_SUCCESS, payload: {user, token, name}})
+        addUserToLocalStorage({ user, token, name });
     } catch (error) {
         if (error.response.status !== 401) {
             dispatch({
@@ -209,9 +212,9 @@ const AppProvider = ({children}) => {
   const createWork = async () => {
       dispatch({ type: CREATE_WORK_BEGIN })
       try {
-        const {authorName, title, genre, content, contributions} = state
+        const {name, title, genre, content, contributions} = state
         await authFetch.post('/works', {
-          authorName,
+          name,
           title,
           genre,
           content,
@@ -267,9 +270,9 @@ const AppProvider = ({children}) => {
         dispatch({ type: EDIT_WORK_BEGIN })
 
         try {
-          const {authorName, title, genre, content, contributions} = state
+          const {name, title, genre, content, contributions} = state
           await authFetch.patch(`/works/${state.editWorkId}`, {
-            authorName,
+            name,
             title,
             genre,
             content,
