@@ -4,15 +4,23 @@ import { BadRequestError, NotFoundError } from '../error/index.js';
 import checkPermissions from "../utils/checkPermissions.js";
 
 const createContribution = async(req, res) => {
-    console.log('contribution created');
+    const {contributor, content, createdBy, originalAuthorId} = req.body;
+
+    if(!contributor || !content || !createdBy || !originalAuthorId){
+        throw new BadRequestError('Please provide all values');
+    }
+
+    const contribution = await Contribution.create(req.body);
+
+    res.status(StatusCodes.CREATED).json({contribution});
 }
 
 const getContributions = async (req, res) => {
-    console.log('contributions received');
+    res.status(StatusCodes.OK).json({msg: 'contributions fetched'});
 }
 
 const deleteContribution = async (req, res) => {
-    console.log('contribution deleted');
+    res.status(StatusCodes.OK).json({msg: 'contribution deleted'});
 }
 
 export {createContribution, getContributions, deleteContribution};

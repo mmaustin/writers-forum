@@ -22,7 +22,7 @@ app.use(express.json());
 
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/works', worksRouter);
-app.use('/api/v1/contibutions', contributionRouter);
+app.use('/api/v1/contributions', contributionRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
