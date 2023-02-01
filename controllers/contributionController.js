@@ -1,16 +1,16 @@
 import Contribution from '../models/Contribution.js';
 import { StatusCodes } from 'http-status-codes';
 import { BadRequestError, NotFoundError } from '../error/index.js';
-import checkPermissions from "../utils/checkPermissions.js";
+import checkContributionPermissions from '../utils/checkContributionPermissions.js';
 
 const createContribution = async(req, res) => {
     const {contributor, contributorId, content, createdBy, originalAuthor} = req.body;
 
-    if(!contributor || contributorId || !content || !createdBy || !originalAuthor){
+    if(!contributor || !contributorId || !content || !createdBy || !originalAuthor){
         throw new BadRequestError('Please provide all values');
     }
 
-    checkPermissions(req.user, contributorId);
+    checkContributionPermissions(req.user, contributorId);
 
     const contribution = await Contribution.create(req.body);
 

@@ -6,4 +6,4 @@ const checkPermissions = (requestUser, resourceUserId) => {
     throw new UnAuthenticatedError('Not authorized to access this route')
   }
   
-  export default checkPermissions;
+export default checkPermissions;
