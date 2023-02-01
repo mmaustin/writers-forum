@@ -20,9 +20,9 @@ const ContributionSchema = mongoose.Schema({
         ref: 'Work',
         required: [true, 'Please provide the work\'s id.'],
     },
-    originalAuthor: {
+    originalAuthorId: {
         type: String,
-        required: [true, 'Please provide the author\'s name']
+        required: [true, 'Please provide the author\'s id']
     },
     },
     {timestamps: true}

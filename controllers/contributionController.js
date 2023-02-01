@@ -4,9 +4,9 @@ import { BadRequestError, NotFoundError } from '../error/index.js';
 import checkContributionPermissions from '../utils/checkContributionPermissions.js';
 
 const createContribution = async(req, res) => {
-    const {contributor, contributorId, content, createdBy, originalAuthor} = req.body;
+    const {contributor, contributorId, content, createdBy, originalAuthorId} = req.body;
 
-    if(!contributor || !contributorId || !content || !createdBy || !originalAuthor){
+    if(!contributor || !contributorId || !content || !createdBy || !originalAuthorId){
         throw new BadRequestError('Please provide all values');
     }
 
@@ -30,7 +30,19 @@ const getContributions = async (req, res) => {
 }
 
 const deleteContribution = async (req, res) => {
-    res.status(StatusCodes.OK).json({msg: 'contribution deleted'});
+    const { id: contributionId } = req.params
+
+    const contribution = await Contribution.findOne({ _id: contributionId })
+  
+    if (!contribution) {
+      throw new NotFoundError(`No contribution with id :${contributionId}`)
+    }
+  
+    checkContributionPermissions(req.user, contribution.originalAuthorId)
+  
+    await contribution.remove();
+  
+    res.status(StatusCodes.OK).json({ msg: 'Success! Contribution removed' })
 }
 
 export {createContribution, getContributions, deleteContribution};
