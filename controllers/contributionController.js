@@ -24,7 +24,7 @@ const getContributions = async (req, res) => {
         throw new NotFoundError(`No contributions found for work with this id: ${workId}`)
     }
 
-    res.status(StatusCodes.OK).json({ workContributions, totalWorkContributions: workContributions.lenght });
+    res.status(StatusCodes.OK).json({ workContributions, totalWorkContributions: workContributions.length });
 }
 
 const deleteContribution = async (req, res) => {

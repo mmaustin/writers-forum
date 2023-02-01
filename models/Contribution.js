@@ -6,6 +6,10 @@ const ContributionSchema = mongoose.Schema({
         required: [true, 'Please provide a name.'],
         trim: true
     },
+    contributorId: {
+        type: String,
+        required: [true, 'Please provide the contributor\'s id.']
+    },
     content: {
         type: String,
         required: [true, 'We need some content!'],
