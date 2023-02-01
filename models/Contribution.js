@@ -16,7 +16,7 @@ const ContributionSchema = mongoose.Schema({
         ref: 'Work',
         required: [true, 'Please provide the work\'s id.'],
     },
-    originalAuthorId: {
+    originalAuthor: {
         type: String,
         required: [true, 'Please provide the author\'s name']
     },

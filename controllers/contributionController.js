@@ -4,9 +4,9 @@ import { BadRequestError, NotFoundError } from '../error/index.js';
 import checkPermissions from "../utils/checkPermissions.js";
 
 const createContribution = async(req, res) => {
-    const {contributor, content, createdBy, originalAuthorId} = req.body;
+    const {contributor, content, createdBy, originalAuthor} = req.body;
 
-    if(!contributor || !content || !createdBy || !originalAuthorId){
+    if(!contributor || !content || !createdBy || !originalAuthor){
         throw new BadRequestError('Please provide all values');
     }
 
@@ -16,7 +16,15 @@ const createContribution = async(req, res) => {
 }
 
 const getContributions = async (req, res) => {
-    res.status(StatusCodes.OK).json({msg: 'contributions fetched'});
+    const {id: workId} = req.params;
+
+    const workContributions = await Contribution.find({createdBy: workId});
+
+    if (!workContributions) {
+        throw new NotFoundError(`No contributions found for work with this id: ${workId}`)
+    }
+
+    res.status(StatusCodes.OK).json({ workContributions, totalWorkContributions: workContributions.lenght });
 }
 
 const deleteContribution = async (req, res) => {
