@@ -4,11 +4,13 @@ import { BadRequestError, NotFoundError } from '../error/index.js';
 import checkPermissions from "../utils/checkPermissions.js";
 
 const createContribution = async(req, res) => {
-    const {contributor, content, createdBy, originalAuthor} = req.body;
+    const {contributor, contributorId, content, createdBy, originalAuthor} = req.body;
 
-    if(!contributor || !content || !createdBy || !originalAuthor){
+    if(!contributor || contributorId || !content || !createdBy || !originalAuthor){
         throw new BadRequestError('Please provide all values');
     }
+
+    checkPermissions(req.user, contributorId);
 
     const contribution = await Contribution.create(req.body);
 
