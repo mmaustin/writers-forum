@@ -6,3 +6,5 @@ import {createContribution, getContributions, deleteContribution} from '../contr
 
 router.route('/').get(authenticateUser, getContributions).post(authenticateUser, createContribution);
 router.route('/:id').delete(authenticateUser, deleteContribution);
+
+export default router;
