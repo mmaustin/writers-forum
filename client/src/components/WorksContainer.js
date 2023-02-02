@@ -14,7 +14,7 @@ const WorksContainer = () => {
   if(isLoading){
     return <Loading center />
   }
-console.log(works);
+  
   if(works.length === 0){
     return(
       <Wrapper>
