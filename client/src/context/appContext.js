@@ -304,10 +304,10 @@ const AppProvider = ({children}) => {
         }
     }
     
-    const getWorkContributions = async(workId) => {
+    const getWorkContributions = async() => {
       dispatch({type: GET_CONTRIBUTIONS_BEGIN});
       try {
-          const {data} = await authFetch(`/contributions/${workId}`);
+          const {data} = await authFetch(`/contributions`);
           const {workContributions, totalWorkContributions} = data;
           dispatch({
               type: GET_CONTRIBUTIONS_SUCCESS,
