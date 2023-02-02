@@ -20,11 +20,12 @@ const createContribution = async(req, res) => {
 const getContributions = async (req, res) => {
     const {id: workId} = req.params;
 
-    const workContributions = await Contribution.find({createdBy: workId});
-
-    if (!workContributions) {
-        throw new NotFoundError(`No contributions found for work with this id: ${workId}`)
-    }
+    // const workContributions = await Contribution.find({createdBy: workId});
+    const workContributions = await Contribution.find({});
+    
+    // if (!workContributions) {
+    //     throw new NotFoundError(`No contributions found for work with this id: ${workId}`)
+    // }
 
     res.status(StatusCodes.OK).json({ workContributions, totalWorkContributions: workContributions.length });
 }
