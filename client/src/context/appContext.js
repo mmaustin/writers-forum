@@ -57,6 +57,8 @@ const initialState = {
     totalWorks: 0,
     isEditing: false,
     editWorkId: '',
+    workContributions: [],
+    totalWorkContributions: 0,
 }
 
 const AppContext = React.createContext();
