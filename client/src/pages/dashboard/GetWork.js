@@ -1,8 +1,15 @@
+import { useEffect } from "react";
 import { Navigate} from "react-router-dom";
 import { useAppContext } from "../../context/appContext";
 
 const GetWork = () => {
-    const {work} = useAppContext();
+  const {work, getWorkContributions} = useAppContext();
+
+  useEffect(() => {
+    getWorkContributions(work._id);
+  }, [])
+  
+
   return (
     <>
         {/* <h2>Do Not Refresh!!!</h2> */}
