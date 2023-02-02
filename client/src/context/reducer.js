@@ -28,7 +28,9 @@ import {
     EDIT_WORK_BEGIN,
     EDIT_WORK_SUCCESS,
     EDIT_WORK_ERROR,
-    DELETE_WORK_BEGIN                        
+    DELETE_WORK_BEGIN,
+    GET_CONTRIBUTIONS_BEGIN,
+    GET_CONTRIBUTIONS_SUCCESS,                          
 } from './actions';
 
 import {initialState} from './appContext';
@@ -261,7 +263,19 @@ const reducer = (state, action) => {
         alertType: 'danger',
         alertText: action.payload.msg,
       }
-    }     
+    }
+    
+    if (action.type === GET_CONTRIBUTIONS_BEGIN) {
+      return { ...state, isLoading: true, showAlert: false }
+    }
+    if (action.type === GET_CONTRIBUTIONS_SUCCESS) {
+      return {
+        ...state,
+        isLoading: false,
+        workContributions: action.payload.workContributions,
+        totalWorkContributions: action.payload.totalWorkContributions,
+      }
+    }    
 
     throw new Error(`no such action: ${action.type}`);
 }

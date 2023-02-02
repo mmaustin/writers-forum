@@ -32,7 +32,9 @@ import {
   EDIT_WORK_BEGIN,
   EDIT_WORK_SUCCESS,
   EDIT_WORK_ERROR,
-  DELETE_WORK_BEGIN         
+  DELETE_WORK_BEGIN,
+  GET_CONTRIBUTIONS_BEGIN,
+  GET_CONTRIBUTIONS_SUCCESS,           
 } from './actions';
 
 const token = localStorage.getItem('token');
@@ -300,7 +302,22 @@ const AppProvider = ({children}) => {
         } catch (error) {
           logoutUser()
         }
-    }  
+    }
+    
+    const getWorkContributions = async(workId) => {
+      dispatch({type: GET_CONTRIBUTIONS_BEGIN});
+      try {
+          const {data} = await authFetch(`/contributions/${workId}`);
+          const {workContributions, totalWorkContributions} = data;
+          dispatch({
+              type: GET_CONTRIBUTIONS_SUCCESS,
+              payload: {workContributions, totalWorkContributions}
+          })
+      } catch (error) {
+          logoutUser();
+      }
+      clearAlert();
+    }    
 
   return(
     <AppContext.Provider
@@ -321,6 +338,7 @@ const AppProvider = ({children}) => {
         editWork,
         deleteWork,
         getWork,
+        getWorkContributions,
       }}
     >
       {children}
