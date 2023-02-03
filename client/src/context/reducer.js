@@ -30,7 +30,10 @@ import {
     EDIT_WORK_ERROR,
     DELETE_WORK_BEGIN,
     GET_CONTRIBUTIONS_BEGIN,
-    GET_CONTRIBUTIONS_SUCCESS,                          
+    GET_CONTRIBUTIONS_SUCCESS,
+    CREATE_CONTRIBUTION_BEGIN,
+    CREATE_CONTRIBUTION_SUCCESS,
+    CREATE_CONTRIBUTION_ERROR,                             
 } from './actions';
 
 import {initialState} from './appContext';
@@ -268,6 +271,29 @@ const reducer = (state, action) => {
         alertText: action.payload.msg,
       }
     }
+
+    if (action.type === CREATE_CONTRIBUTION_BEGIN) {
+      return { ...state, isLoading: true }
+    }    
+
+    if (action.type === CREATE_CONTRIBUTION_SUCCESS) {
+      return {
+        ...state,
+        isLoading: false,
+        showAlert: true,
+        alertType: 'success',
+        alertText: 'New Contribution Created!',
+      }
+    }
+    if (action.type === CREATE_CONTRIBUTION_ERROR) {
+      return {
+        ...state,
+        isLoading: false,
+        showAlert: true,
+        alertType: 'danger',
+        alertText: action.payload.msg,
+      }
+    }    
     
     if (action.type === GET_CONTRIBUTIONS_BEGIN) {
       return { ...state, isLoading: true, showAlert: false }
