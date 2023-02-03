@@ -1,11 +1,13 @@
 import { useAppContext } from "../context/appContext";
 import {FormRow, Alert, Logo} from '../components';
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ContributionAdd = ({originalAuthorId, createdBy}) => {
-    const {user, isLoading, showAlert, displayAlert, clearValues} = useAppContext();
+    const {user, isLoading, showAlert, displayAlert, clearValues, createContribution} = useAppContext();
     const contributor = user.name;
     const contributorId = user._id;
+    const navigate = useNavigate();
     const [content, setContent] = useState('');
 
     const onSetContent = e => setContent(e.target.value);
@@ -17,7 +19,7 @@ const ContributionAdd = ({originalAuthorId, createdBy}) => {
             return
         }
         const newContribution = {contributor, contributorId, content, createdBy, originalAuthorId}
-        console.log(newContribution);
+        createContribution(newContribution);
     }
 
   return (

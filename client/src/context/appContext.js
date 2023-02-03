@@ -307,10 +307,10 @@ const AppProvider = ({children}) => {
         }
     }
 
-    const createContribuion = async (newContribution) => {
+    const createContribution = async (newContribution) => {
       dispatch({ type: CREATE_CONTRIBUTION_BEGIN })
       try {
-        await authFetch.post('/contribution', newContribution)
+        await authFetch.post('/contributions', newContribution)
         dispatch({ type: CREATE_CONTRIBUTION_SUCCESS })
         dispatch({ type: CLEAR_VALUES })
       } catch (error) {
@@ -358,7 +358,7 @@ const AppProvider = ({children}) => {
         deleteWork,
         getWork,
         getWorkContributions,
-        createContribuion,
+        createContribution,
       }}
     >
       {children}
