@@ -1,20 +1,11 @@
-import { useEffect } from "react";
 import { Navigate} from "react-router-dom";
 import { useAppContext } from "../../context/appContext";
 import ContributionAdd from "../../components/ContributionAdd";
 import ContributionsContainer from "../../components/ContributionsContainer";
 
 const GetWork = () => {
-  const {work, getWorkContributions, workContributions, totalWorkContributions} = useAppContext();
 
-  // useEffect(() => {
-  //   getWorkContributions();
-  // },[])
-
-  // const contributions = workContributions.filter(contrib => contrib.createdBy === work._id)
-  // const c = contributions.map((con,i)=>{
-  //   return <p key={i}>{con.content}</p>
-  // })
+  const {work} = useAppContext();
 
   return (
     <>
@@ -22,7 +13,7 @@ const GetWork = () => {
         {work.genre}
         {work.content}
         <p></p>
-        <ContributionsContainer workId={work._id}/>
+        <ContributionsContainer {...work}/>
         <ContributionAdd/>
     </>
   )

@@ -1,6 +1,6 @@
 const ContributionAdd = () => {
   return (
-    <div>ContributionAdd</div>
+    <div>Add A Contribution Here</div>
   )
 }
 export default ContributionAdd
