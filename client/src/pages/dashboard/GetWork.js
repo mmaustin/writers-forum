@@ -10,7 +10,9 @@ const GetWork = () => {
   },[])
 
   const contributions = workContributions.filter(contrib => contrib.createdBy === work._id)
-  
+  const c = contributions.map((con,i)=>{
+    return <p key={i}>{con.content}</p>
+  })
 
   return (
     <>
@@ -20,6 +22,7 @@ const GetWork = () => {
         {work.content}
         {work.contributions}
         <p></p>
+        {c}
     </>
   )
 }
