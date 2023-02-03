@@ -34,7 +34,10 @@ import {
   EDIT_WORK_ERROR,
   DELETE_WORK_BEGIN,
   GET_CONTRIBUTIONS_BEGIN,
-  GET_CONTRIBUTIONS_SUCCESS,           
+  GET_CONTRIBUTIONS_SUCCESS,
+  CREATE_CONTRIBUTION_BEGIN,
+  CREATE_CONTRIBUTION_SUCCESS,
+  CREATE_CONTRIBUTION_ERROR,            
 } from './actions';
 
 const token = localStorage.getItem('token');
@@ -303,6 +306,22 @@ const AppProvider = ({children}) => {
           logoutUser()
         }
     }
+
+    const createContribuion = async (newContribution) => {
+      dispatch({ type: CREATE_CONTRIBUTION_BEGIN })
+      try {
+        await authFetch.post('/contribution', newContribution)
+        dispatch({ type: CREATE_CONTRIBUTION_SUCCESS })
+        dispatch({ type: CLEAR_VALUES })
+      } catch (error) {
+        if (error.response.status === 401) return
+        dispatch({
+          type: CREATE_CONTRIBUTION_ERROR,
+          payload: { msg: error.response.data.msg },
+        })
+      }
+      clearAlert()       
+  }    
     
     const getWorkContributions = async() => {
       dispatch({type: GET_CONTRIBUTIONS_BEGIN});
@@ -339,6 +358,7 @@ const AppProvider = ({children}) => {
         deleteWork,
         getWork,
         getWorkContributions,
+        createContribuion,
       }}
     >
       {children}
