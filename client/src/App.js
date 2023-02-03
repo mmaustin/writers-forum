@@ -11,7 +11,6 @@ const App = () => {
           <Route index element={<AllMyWorks/>} />
           <Route path='add-work' element={<AddWork/>} />
           <Route path='profile' element={<Profile/>} />
-          {/* <Route path='get-work' element={<GetWork/>} /> */}
           <Route path='get-work/:id' element={<GetWork/>} />
         </Route>
         <Route path='/landing' element={<Landing/>} />

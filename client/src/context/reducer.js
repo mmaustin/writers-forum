@@ -281,6 +281,7 @@ const reducer = (state, action) => {
         ...state,
         isLoading: false,
         showAlert: true,
+        workContributions: state.workContributions.concat(action.payload.contribution),
         alertType: 'success',
         alertText: 'New Contribution Created!',
       }

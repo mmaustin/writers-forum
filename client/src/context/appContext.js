@@ -310,8 +310,10 @@ const AppProvider = ({children}) => {
     const createContribution = async (newContribution) => {
       dispatch({ type: CREATE_CONTRIBUTION_BEGIN })
       try {
-        await authFetch.post('/contributions', newContribution)
-        dispatch({ type: CREATE_CONTRIBUTION_SUCCESS })
+        const {data} = await authFetch.post('/contributions', newContribution);
+        const {contribution} = data;
+        console.log(contribution);
+        dispatch({ type: CREATE_CONTRIBUTION_SUCCESS, payload: {contribution} })
         dispatch({ type: CLEAR_VALUES })
       } catch (error) {
         if (error.response.status === 401) return
