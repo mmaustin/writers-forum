@@ -1,5 +1,5 @@
 import { useAppContext } from "../context/appContext";
-import {FormRow, Alert} from '../components';
+import {FormRow, Alert, Logo} from '../components';
 import { useState } from "react";
 
 const ContributionAdd = ({originalAuthorId, createdBy}) => {
@@ -21,7 +21,18 @@ const ContributionAdd = ({originalAuthorId, createdBy}) => {
     }
 
   return (
-    <div>Add A Contribution Here</div>
+    <>
+        <h3>Add A Contribution Here</h3>
+        <form onSubmit={onSubmit}>
+             <FormRow
+                type='textarea'
+                name='content'
+                value={content}
+                handleChange={onSetContent}
+            />
+            <button type='submit'>Submit Contribution</button>
+        </form>
+    </>
   )
 }
 export default ContributionAdd
