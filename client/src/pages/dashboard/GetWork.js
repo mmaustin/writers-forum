@@ -14,7 +14,7 @@ const GetWork = () => {
         {work.content}
         <p></p>
         <ContributionsContainer {...work}/>
-        <ContributionAdd/>
+        <ContributionAdd createdBy={work._id} originalAuthorId={work.createdBy}/>
     </>
   )
 }
