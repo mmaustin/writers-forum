@@ -3,7 +3,7 @@ import { useAppContext } from "../context/appContext";
 
 const ContributionsContainer = ({_id, contributions}) => {
 
-    const {getWorkContributions, workContributions} = useAppContext();
+    const {user, getWorkContributions, workContributions} = useAppContext();
 
     useEffect(() => {
       getWorkContributions();
@@ -12,7 +12,16 @@ const ContributionsContainer = ({_id, contributions}) => {
   console.log(typeof workContributions);
     const wContributions = workContributions.filter(contrib => contrib.createdBy === _id)
     const allContributions = wContributions.map((con,i)=>{
-      return <p key={i}>{con.content}</p>
+      if(user._id === con.originalAuthorId){
+        return <div>
+                <p key={i}>{con.content}</p>
+                <button type="button" onClick={()=> console.log(con._id)}></button>
+              </div>
+      } else {
+        return <div>
+          <p key={i}>{con.content}</p>
+        </div>
+      }
     })
 
   return (
