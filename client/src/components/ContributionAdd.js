@@ -1,16 +1,13 @@
 import { useAppContext } from "../context/appContext";
 import {FormRow, Alert, Logo} from '../components';
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState} from "react";
 import ContributionsContainer from "./ContributionsContainer";
 
 const ContributionAdd = ({originalAuthorId, createdBy}) => {
     const {user, isLoading, showAlert, displayAlert, clearValues, createContribution} = useAppContext();
     const contributor = user.name;
     const contributorId = user._id;
-    const navigate = useNavigate();
     const [content, setContent] = useState('');
-    const [returnPage, setReturnPage] = useState(false);
 
     const onSetContent = e => setContent(e.target.value);
 
@@ -24,15 +21,6 @@ const ContributionAdd = ({originalAuthorId, createdBy}) => {
         createContribution(newContribution);
         setContent('');
     }
-    
-    // useEffect(()=> {
-    //     if(returnPage){
-    //       setTimeout(()=>{
-    //         getWorkContributions();
-    //       }, 3000)
-    //     }
-    //   }, [])  
-    //   console.log(workContributions);
 
   return (
     <>
