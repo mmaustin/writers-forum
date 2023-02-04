@@ -15,7 +15,7 @@ const ContributionsContainer = ({_id, contributions}) => {
       if(user._id === con.originalAuthorId){
         return <div>
                 <p key={i}>{con.content}</p>
-                <button type="button" onClick={()=> console.log(con._id)}></button>
+                <button type="button" onClick={()=> console.log(con._id)}>Delete</button>
               </div>
       } else {
         return <div>

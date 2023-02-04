@@ -22,8 +22,7 @@ const ContributionAdd = ({originalAuthorId, createdBy}) => {
         }
         const newContribution = {contributor, contributorId, content, createdBy, originalAuthorId}
         createContribution(newContribution);
-        //navigate(`/`)
-        //setReturnPage(!returnPage);
+        setContent('');
     }
     
     // useEffect(()=> {
