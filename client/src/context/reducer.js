@@ -33,7 +33,8 @@ import {
     GET_CONTRIBUTIONS_SUCCESS,
     CREATE_CONTRIBUTION_BEGIN,
     CREATE_CONTRIBUTION_SUCCESS,
-    CREATE_CONTRIBUTION_ERROR,                             
+    CREATE_CONTRIBUTION_ERROR,
+    DELETE_CONTRIBUTION_BEGIN,                             
 } from './actions';
 
 import {initialState} from './appContext';
@@ -306,6 +307,10 @@ const reducer = (state, action) => {
         workContributions: action.payload.workContributions,
         totalWorkContributions: action.payload.totalWorkContributions,
       }
+    }
+    
+    if (action.type === DELETE_CONTRIBUTION_BEGIN) {
+      return { ...state, isLoading: true }
     }    
 
     throw new Error(`no such action: ${action.type}`);

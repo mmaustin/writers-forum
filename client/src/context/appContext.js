@@ -37,7 +37,8 @@ import {
   GET_CONTRIBUTIONS_SUCCESS,
   CREATE_CONTRIBUTION_BEGIN,
   CREATE_CONTRIBUTION_SUCCESS,
-  CREATE_CONTRIBUTION_ERROR,            
+  CREATE_CONTRIBUTION_ERROR,
+  DELETE_CONTRIBUTION_BEGIN,              
 } from './actions';
 
 const token = localStorage.getItem('token');
