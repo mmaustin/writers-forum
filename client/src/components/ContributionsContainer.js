@@ -3,7 +3,7 @@ import { useAppContext } from "../context/appContext";
 
 const ContributionsContainer = ({_id, contributions}) => {
 
-    const {user, getWorkContributions, workContributions} = useAppContext();
+    const {user, getWorkContributions, workContributions, deleteContribution} = useAppContext();
 
     useEffect(() => {
       getWorkContributions();
@@ -15,7 +15,7 @@ const ContributionsContainer = ({_id, contributions}) => {
       if(user._id === con.originalAuthorId){
         return <div>
                 <p key={i}>{con.content}</p>
-                <button type="button" onClick={()=> console.log(con._id)}>Delete</button>
+                <button type="button" onClick={()=> deleteContribution(con._id)}>Delete</button>
               </div>
       } else {
         return <div>
