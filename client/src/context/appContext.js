@@ -339,7 +339,17 @@ const AppProvider = ({children}) => {
           logoutUser();
       }
       clearAlert();
-    }    
+    }
+    
+    const deleteContribution = async (contributionId) => {
+      dispatch({ type: DELETE_WORK_BEGIN })
+      try {
+        await authFetch.delete(`/contributions/${contributionId}`)
+        getWorkContributions()
+      } catch (error) {
+        logoutUser()
+      }
+  }    
 
   return(
     <AppContext.Provider
@@ -362,6 +372,7 @@ const AppProvider = ({children}) => {
         getWork,
         getWorkContributions,
         createContribution,
+        deleteContribution,
       }}
     >
       {children}
