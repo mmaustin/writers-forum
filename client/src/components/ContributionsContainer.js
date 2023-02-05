@@ -9,7 +9,7 @@ const ContributionsContainer = ({_id, contributions}) => {
       getWorkContributions();
       // eslint-disable-next-line
     },[])
-  console.log(typeof workContributions);
+  
     const wContributions = workContributions.filter(contrib => contrib.createdBy === _id)
     const allContributions = wContributions.map((con,i)=>{
       if(user._id === con.originalAuthorId){

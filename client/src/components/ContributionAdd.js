@@ -1,3 +1,8 @@
+//This component needs to be placed inside of the contributions container component
+//so that I'll have access to the work contributions array length.  Instead of 
+//passing down props to this component via GetWork, I'll pass them from
+//contributions container, which will have all of the work properties I need--via GetWork.
+
 import { useAppContext } from "../context/appContext";
 import {FormRow, Alert, Logo} from '../components';
 import { useState} from "react";
