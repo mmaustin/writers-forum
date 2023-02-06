@@ -2,6 +2,7 @@ import { Navigate,useParams} from "react-router-dom";
 import { useAppContext } from "../../context/appContext";
 import ContributionAdd from "../../components/ContributionAdd";
 import ContributionsContainer from "../../components/ContributionsContainer";
+import { v4 as uuidv4 } from 'uuid';
 
 
 const GetWork = () => {
@@ -12,9 +13,9 @@ const GetWork = () => {
   
   const workFound = works.filter(w => w._id === workId)
   
-  const work = workFound.map((wo,i)=>{
-    return <div>
-      <p key={i+1}>{wo.title} **** {wo.genre} **** {wo.content}</p>
+  const work = workFound.map(wo => {
+    return <div key={uuidv4()}>
+      <p >{wo.title} **** {wo.genre} **** {wo.content}</p>
     </div>
   })
   
