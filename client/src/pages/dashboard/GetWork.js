@@ -1,6 +1,5 @@
 import { Navigate,useParams} from "react-router-dom";
 import { useAppContext } from "../../context/appContext";
-//import ContributionAdd from "../../components/ContributionAdd";
 import ContributionsContainer from "../../components/ContributionsContainer";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -26,7 +25,6 @@ const GetWork = () => {
         {work}
         <p></p>
         <ContributionsContainer {...workFound[0]}/>
-        {/* <ContributionAdd createdBy={workFound[0]._id} originalAuthorId={workFound[0].createdBy}/> */}
          </>
         : <Navigate to='/'/>}
     </>
