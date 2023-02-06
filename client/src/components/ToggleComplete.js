@@ -1,9 +1,9 @@
 
 const ToggleComplete = ({complete}) => {
   return (
-    <h3>
-        {complete ? 'Work Completed' : 'Work in Progress'}
-    </h3>
+    <h5>
+        {complete === 'true' ? 'Work Completed' : 'Work in Progress'}
+    </h5>
   )
 }
 export default ToggleComplete

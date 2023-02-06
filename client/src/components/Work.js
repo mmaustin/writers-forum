@@ -5,9 +5,14 @@ import { useAppContext } from "../context/appContext";
 import Wrapper from '../assets/wrappers/Work';
 import WorkInfo from "./WorkInfo";
 import { Link } from 'react-router-dom';
+//import ToggleComplete from './ToggleComplete';
+
 
 const Work = ({_id, title, genre, content, contributions, createdBy, complete}) => {
-  const {setEditWork, deleteWork, getWork} = useAppContext();
+  const {setEditWork, deleteWork} = useAppContext();
+
+
+
   return (
     <Wrapper>
       <div className='content'>
@@ -17,7 +22,8 @@ const Work = ({_id, title, genre, content, contributions, createdBy, complete}) 
           <WorkInfo icon={<FaCalendarAlt />} text={contributions} />
           <WorkInfo icon={<FcClock />} text={complete} />
           <WorkInfo icon={<FcClock />} text={createdBy} />
-        </div>        
+        </div>
+        {/* <ToggleComplete complete={complete}/> */}
         <footer>
           <div className='actions'>
           <Link to='add-work' className='btn edit-btn' onClick={()=> setEditWork(_id)}>Edit</Link>
