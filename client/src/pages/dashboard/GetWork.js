@@ -9,11 +9,10 @@ const GetWork = () => {
   const {works} = useAppContext();
   const params = useParams();
   const workId = params.id
-  const workArray = [];
-  const w = works.filter(w => w._id === workId)
-  // workArray.push(work)
-  // console.log(workArray);
-  const work = w.map((wo,i)=>{
+  
+  const workFound = works.filter(w => w._id === workId)
+  
+  const work = workFound.map((wo,i)=>{
     return <div>
       <p key={i+1}>{wo.title} **** {wo.genre} **** {wo.content}</p>
     </div>
@@ -25,8 +24,8 @@ const GetWork = () => {
         {work.length !== 0 ? <>
         {work}
         <p></p>
-        <ContributionsContainer {...w[0]}/>
-        <ContributionAdd createdBy={w[0]._id} originalAuthorId={w[0].createdBy}/>
+        <ContributionsContainer {...workFound[0]}/>
+        <ContributionAdd createdBy={workFound[0]._id} originalAuthorId={workFound[0].createdBy}/>
          </>
         : <Navigate to='/'/>}
     </>
