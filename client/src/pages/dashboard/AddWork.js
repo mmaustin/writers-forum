@@ -1,5 +1,5 @@
 import { useAppContext } from "../../context/appContext";
-import {FormRow, Alert} from '../../components';
+import {FormRow, Alert, FormRowSelect} from '../../components';
 import Wrapper from '../../assets/wrappers/DashboardFormPage';
 
 const AddWork = () => {
@@ -60,7 +60,7 @@ const AddWork = () => {
             value={contributions}
             handleChange={handleWorkInput}
           />
-          <FormRow
+          <FormRowSelect
             name='complete'
             value={complete}
             handleChange={handleWorkInput}

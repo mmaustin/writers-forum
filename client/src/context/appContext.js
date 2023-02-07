@@ -59,7 +59,7 @@ const initialState = {
     content: '',
     contributions: 0,
     complete: 'false',
-    completeOptions: ['false', 'true'],
+    completeOptions: ['true','false'],
     works: [],
     work: [],
     totalWorks: 0,

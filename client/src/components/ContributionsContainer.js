@@ -3,7 +3,8 @@ import { useAppContext } from "../context/appContext";
 import { v4 as uuidv4 } from 'uuid';
 import ContributionAdd from './ContributionAdd';
 
-const ContributionsContainer = ({_id, contributions, createdBy}) => {
+
+const ContributionsContainer = ({_id, contributions, createdBy, complete}) => {
 
     const {user, getWorkContributions, workContributions, deleteContribution} = useAppContext();
 
