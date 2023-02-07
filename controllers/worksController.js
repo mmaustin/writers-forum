@@ -23,7 +23,7 @@ const getUserWorks = async (req,res) => {
 }
 const updateWork = async (req,res) => {
     const { id: workId } = req.params
-    const {name, title, genre, content, contributions } = req.body
+    const {name, title, genre, content, contributions} = req.body
     
     if (!name || !title || !genre || !content || !contributions) {
         throw new BadRequestError('Please provide all values')

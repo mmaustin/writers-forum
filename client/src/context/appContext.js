@@ -58,6 +58,8 @@ const initialState = {
     genre: '',
     content: '',
     contributions: 0,
+    complete: 'false',
+    completeOptions: ['false', 'true'],
     works: [],
     work: [],
     totalWorks: 0,
@@ -220,13 +222,14 @@ const AppProvider = ({children}) => {
   const createWork = async () => {
       dispatch({ type: CREATE_WORK_BEGIN })
       try {
-        const {name, title, genre, content, contributions} = state
+        const {name, title, genre, content, contributions, complete} = state
         await authFetch.post('/works', {
           name,
           title,
           genre,
           content,
-          contributions
+          contributions,
+          complete
         })
         dispatch({ type: CREATE_WORK_SUCCESS })
         dispatch({ type: CLEAR_VALUES })
@@ -278,13 +281,14 @@ const AppProvider = ({children}) => {
         dispatch({ type: EDIT_WORK_BEGIN })
 
         try {
-          const {name, title, genre, content, contributions} = state
+          const {name, title, genre, content, contributions, complete} = state
           await authFetch.patch(`/works/${state.editWorkId}`, {
             name,
             title,
             genre,
             content,
-            contributions
+            contributions,
+            complete
           })
           dispatch({ type: EDIT_WORK_SUCCESS })
           dispatch({ type: CLEAR_VALUES })
