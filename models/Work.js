@@ -34,8 +34,9 @@ const WorkSchema = new mongoose.Schema({
         required: [true, 'Please provide an author.'],
     },
     complete: {
-        type: Boolean,
-        default: false
+        type: String,
+        enum: ['false', 'true'],
+        default: 'false'
     },
     },
     {timestamps: true}
