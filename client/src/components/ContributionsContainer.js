@@ -3,7 +3,7 @@ import { useAppContext } from "../context/appContext";
 import { v4 as uuidv4 } from 'uuid';
 import ContributionAdd from './ContributionAdd';
 
-const ContributionsContainer = ({_id, contributions, createdBy, originalAuthorId}) => {
+const ContributionsContainer = ({_id, contributions, createdBy}) => {
 
     const {user, getWorkContributions, workContributions, deleteContribution} = useAppContext();
 
@@ -32,7 +32,7 @@ const ContributionsContainer = ({_id, contributions, createdBy, originalAuthorId
         {contributions}
         <div>{allContributions}</div>
         {wContributions.length < contributions &&
-          <ContributionAdd createdBy={createdBy} originalAuthorId={originalAuthorId}/>
+          <ContributionAdd createdBy={_id} originalAuthorId={createdBy}/>
         }     
     </div>
   )

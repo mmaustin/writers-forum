@@ -17,7 +17,6 @@ const GetWork = () => {
       <p >{wo.title} **** {wo.genre} **** {wo.content}</p>
     </div>
   })
-  
 
   return (
      <> 

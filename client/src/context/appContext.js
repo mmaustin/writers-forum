@@ -317,7 +317,6 @@ const AppProvider = ({children}) => {
       try {
         const {data} = await authFetch.post('/contributions', newContribution);
         const {contribution} = data;
-        console.log(contribution);
         dispatch({ type: CREATE_CONTRIBUTION_SUCCESS, payload: {contribution} })
         dispatch({ type: CLEAR_VALUES })
       } catch (error) {
