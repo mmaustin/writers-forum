@@ -3,7 +3,7 @@ import {FormRow, Alert} from '../../components';
 import Wrapper from '../../assets/wrappers/DashboardFormPage';
 
 const AddWork = () => {
-  const {showAlert, displayAlert, isLoading, title, genre, content, contributions, handleChange, clearValues, createWork, isEditing, editWork} = useAppContext();
+  const {showAlert, displayAlert, isLoading, title, genre, content, contributions, complete, completeOptions, handleChange, clearValues, createWork, isEditing, editWork} = useAppContext();
   
   const handleSubmit = e => {
     e.preventDefault();
@@ -18,7 +18,7 @@ const AddWork = () => {
     createWork();
   }
 
-  const handleEventInput = (e) => {
+  const handleWorkInput = (e) => {
     const name = e.target.name
     const value = e.target.value
     handleChange({ name, value })
@@ -34,31 +34,37 @@ const AddWork = () => {
             type='text'
             name='name'
             value='j'
-            handleChange={handleEventInput}
+            handleChange={handleWorkInput}
           /> */}
           <FormRow
             type='text'
             name='title'
             value={title}
-            handleChange={handleEventInput}
+            handleChange={handleWorkInput}
           />
           <FormRow
             type='text'
             name='genre'
             value={genre}
-            handleChange={handleEventInput}
+            handleChange={handleWorkInput}
           />
             <FormRow
               type='textarea'
               name='content'
               value={content}
-              handleChange={handleEventInput}
+              handleChange={handleWorkInput}
             />
           <FormRow
             type='number'
             name='contributions'
             value={contributions}
-            handleChange={handleEventInput}
+            handleChange={handleWorkInput}
+          />
+          <FormRow
+            name='complete'
+            value={complete}
+            handleChange={handleWorkInput}
+            list={completeOptions}
           />
           <div className='btn-container'>
             <button
@@ -72,7 +78,7 @@ const AddWork = () => {
             <button
               className='btn btn-block clear-btn'            
               onClick={(e) => {
-                e.preventDefault()
+                e.prWorkDefault()
                 clearValues()
               }}
             >
