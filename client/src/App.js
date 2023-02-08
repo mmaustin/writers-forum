@@ -1,6 +1,6 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import { Landing, Register, Error } from "./pages"
-import { AddWork, AllMyWorks, Profile, SharedLayout, ProtectedRoute, GetWork } from './pages/dashboard';
+import { AddWork, AllWorks, Profile, SharedLayout, ProtectedRoute, GetWork } from './pages/dashboard';
 
 
 const App = () => {
@@ -8,7 +8,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<ProtectedRoute><SharedLayout/></ProtectedRoute>}>
-          <Route index element={<AllMyWorks/>} />
+          <Route index element={<AllWorks/>} />
           <Route path='add-work' element={<AddWork/>} />
           <Route path='profile' element={<Profile/>} />
           <Route path='get-work/:id' element={<GetWork/>} />

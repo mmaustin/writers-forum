@@ -1,11 +1,11 @@
 import { WorksContainer } from "../../components"
 
 
-const AllMyWorks = () => {
+const AllWorks = () => {
   return (
     <>
       <WorksContainer/>
     </>
   )
 }
-export default AllMyWorks
+export default AllWorks

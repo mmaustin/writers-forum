@@ -345,7 +345,7 @@ const AppProvider = ({children}) => {
     }
     
     const deleteContribution = async (contributionId) => {
-      dispatch({ type: DELETE_WORK_BEGIN })
+      dispatch({ type: DELETE_CONTRIBUTION_BEGIN })
       try {
         await authFetch.delete(`/contributions/${contributionId}`)
         getWorkContributions()
