@@ -26,6 +26,8 @@ import {
   CREATE_WORK_ERROR,
   GET_WORKS_BEGIN,
   GET_WORKS_SUCCESS,
+  GET_USER_WORKS_BEGIN,
+  GET_USER_WORKS_SUCCESS,
   GET_WORK_BEGIN,
   GET_WORK_SUCCESS,  
   SET_EDIT_WORK,
@@ -61,6 +63,7 @@ const initialState = {
     complete: 'false',
     completeOptions: ['true','false'],
     works: [],
+    userWorks: [],
     work: [],
     totalWorks: 0,
     isEditing: false,
@@ -256,7 +259,21 @@ const AppProvider = ({children}) => {
     } catch (error) {
         logoutUser();
     }
-    clearAlert();
+  }
+
+  const userWorks = async() => {
+    let url = `/works`;
+    dispatch({type: GET_USER_WORKS_BEGIN});
+    try {
+        const {data} = await authFetch(url);
+        const {userWorks} = data;
+        dispatch({
+            type: GET_WORKS_SUCCESS,
+            payload: {userWorks}
+        })
+    } catch (error) {
+        logoutUser();
+    }
   }
 
   const getWork = async (workId) => {
@@ -369,6 +386,7 @@ const AppProvider = ({children}) => {
         clearValues,
         createWork,
         getWorks,
+        userWorks,
         setEditWork,
         editWork,
         deleteWork,
