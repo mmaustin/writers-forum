@@ -4,6 +4,7 @@ import AllWorks from "./AllWorks";
 import GetWork from "./GetWork";
 import Profile from "./Profile";
 import SharedLayout from "./SharedLayout";
+import UserWorks from "./UserWorks";
 
 export {
     AddWork,
@@ -11,5 +12,6 @@ export {
     Profile,
     SharedLayout,
     ProtectedRoute,
-    GetWork
+    GetWork,
+    UserWorks
 }

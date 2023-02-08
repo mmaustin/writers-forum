@@ -64,6 +64,7 @@ const initialState = {
     completeOptions: ['true','false'],
     works: [],
     userWorks: [],
+    totalUserWorks: 0,
     work: [],
     totalWorks: 0,
     isEditing: false,
@@ -266,10 +267,10 @@ const AppProvider = ({children}) => {
     dispatch({type: GET_USER_WORKS_BEGIN});
     try {
         const {data} = await authFetch(url);
-        const {userWorks} = data;
+        const {userWorks, totalUserWorks} = data;
         dispatch({
-            type: GET_WORKS_SUCCESS,
-            payload: {userWorks}
+            type: GET_USER_WORKS_SUCCESS,
+            payload: {userWorks, totalUserWorks}
         })
     } catch (error) {
         logoutUser();

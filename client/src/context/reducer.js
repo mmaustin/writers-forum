@@ -227,6 +227,7 @@ const reducer = (state, action) => {
         ...state,
         isLoading: false,
         userWorks: action.payload.userWorks,
+        totalUserWorks: action.payload.totalUserWorks
       }
     }
 
