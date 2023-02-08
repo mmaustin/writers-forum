@@ -5,9 +5,9 @@ import Loading from "./Loading";
 import Work from "./Work";
 
 const UserWorksContainer = () => {
-  const {userWorks, getWorks, isLoading, totalUserWorks} = useAppContext();
+  const {userWorks, getUserWorks, isLoading, totalUserWorks} = useAppContext();
   useEffect(() => {
-    getWorks()
+    getUserWorks()
     // eslint-disable-next-line
   }, [])
 

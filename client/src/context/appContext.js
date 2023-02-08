@@ -262,7 +262,7 @@ const AppProvider = ({children}) => {
     }
   }
 
-  const userWorks = async() => {
+  const getUserWorks = async() => {
     let url = `/works`;
     dispatch({type: GET_USER_WORKS_BEGIN});
     try {
@@ -387,7 +387,7 @@ const AppProvider = ({children}) => {
         clearValues,
         createWork,
         getWorks,
-        userWorks,
+        getUserWorks,
         setEditWork,
         editWork,
         deleteWork,

@@ -7,6 +7,7 @@ import Logo from "./Logo";
 import Navbar from "./Navbar";
 import Navlinks from "./Navlinks";
 import SmallSideBar from "./SmallSideBar";
+import UserWorksContainer from "./UserWorksContainer";
 import Work from "./Work";
 import WorkInfo from './WorkInfo';
 import WorksContainer from "./WorksContainer";
@@ -23,5 +24,6 @@ export {
     WorksContainer,
     Work,
     WorkInfo,
-    FormRowSelect
+    FormRowSelect,
+    UserWorksContainer
 }
