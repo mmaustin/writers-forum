@@ -263,14 +263,14 @@ const AppProvider = ({children}) => {
   }
 
   const getUserWorks = async() => {
-    let url = `/works`;
+    let url = `/works/userWorks`;
     dispatch({type: GET_USER_WORKS_BEGIN});
     try {
         const {data} = await authFetch(url);
-        const {userWorks, totalUserWorks} = data;
+        const {uWorks, totalUserWorks} = data;
         dispatch({
             type: GET_USER_WORKS_SUCCESS,
-            payload: {userWorks, totalUserWorks}
+            payload: {uWorks, totalUserWorks}
         })
     } catch (error) {
         logoutUser();

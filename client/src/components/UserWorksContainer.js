@@ -5,11 +5,14 @@ import Loading from "./Loading";
 import Work from "./Work";
 
 const UserWorksContainer = () => {
-  const {userWorks, getUserWorks, isLoading, totalUserWorks} = useAppContext();
+  const {userWorks, getUserWorks, isLoading, totalUserWorks, user} = useAppContext();
+  //console.log(totalUserWorks);
   useEffect(() => {
     getUserWorks()
     // eslint-disable-next-line
   }, [])
+
+  //
 
   if(isLoading){
     return <Loading center />
@@ -19,6 +22,7 @@ const UserWorksContainer = () => {
     return(
       <Wrapper>
         <h3>No Works To Display . . . </h3>
+        {totalUserWorks}
       </Wrapper>
     )
   }
@@ -26,7 +30,7 @@ const UserWorksContainer = () => {
   return (
     <Wrapper>
       <h5>
-        {totalUserWorks} work{userWorks.length > 1 && 's'} found
+        {userWorks.length} work{userWorks.length > 1 && 's'} found
       </h5>
       <div className="events">
         {userWorks.map(work => {
