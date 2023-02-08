@@ -22,6 +22,8 @@ import {
     CREATE_WORK_ERROR,
     GET_WORKS_BEGIN,
     GET_WORKS_SUCCESS,
+    GET_USER_WORKS_BEGIN,
+    GET_USER_WORKS_SUCCESS,
     GET_WORK_BEGIN,
     GET_WORK_SUCCESS,
     SET_EDIT_WORK,
@@ -204,6 +206,7 @@ const reducer = (state, action) => {
         alertText: action.payload.msg,
       }
     }
+    
     if (action.type === GET_WORKS_BEGIN) {
       return { ...state, isLoading: true, showAlert: false }
     }
@@ -215,6 +218,18 @@ const reducer = (state, action) => {
         totalWorks: action.payload.totalWorks,
       }
     }
+
+    if (action.type === GET_USER_WORKS_BEGIN) {
+      return { ...state, isLoading: true, showAlert: false }
+    }
+    if (action.type === GET_USER_WORKS_SUCCESS) {
+      return {
+        ...state,
+        isLoading: false,
+        userWorks: action.payload.userWorks,
+      }
+    }
+
     if (action.type === GET_WORK_BEGIN) {
       return { ...state, isLoading: true, showAlert: false }
     }
