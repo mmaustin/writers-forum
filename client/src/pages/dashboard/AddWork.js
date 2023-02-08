@@ -30,12 +30,6 @@ const AddWork = () => {
         <h3>{isEditing ? 'Edit Work' : 'Add Work'}</h3>
         {showAlert && <Alert/>}
         <div className='form-center'>
-          {/* <FormRow
-            type='text'
-            name='name'
-            value='j'
-            handleChange={handleWorkInput}
-          /> */}
           <FormRow
             type='text'
             name='title'
@@ -78,7 +72,7 @@ const AddWork = () => {
             <button
               className='btn btn-block clear-btn'            
               onClick={(e) => {
-                e.prWorkDefault()
+                e.preventDefault()
                 clearValues()
               }}
             >

@@ -1,15 +1,9 @@
-//This component needs to be placed inside of the contributions container component
-//so that I'll have access to the work contributions array length.  Instead of 
-//passing down props to this component via GetWork, I'll pass them from
-//contributions container, which will have all of the work properties I need--via GetWork.
-
 import { useAppContext } from "../context/appContext";
-import {FormRow, Alert, Logo} from '../components';
+import {FormRow, Alert} from '../components';
 import { useState} from "react";
-import ContributionsContainer from "./ContributionsContainer";
 
 const ContributionAdd = ({originalAuthorId, createdBy}) => {
-    const {user, isLoading, showAlert, displayAlert, clearValues, createContribution} = useAppContext();
+    const {user, isLoading, showAlert, displayAlert, createContribution} = useAppContext();
     const contributor = user.name;
     const contributorId = user._id;
     const [content, setContent] = useState('');
@@ -32,13 +26,14 @@ const ContributionAdd = ({originalAuthorId, createdBy}) => {
     <>
         <h3>Add A Contribution Here</h3>
         <form onSubmit={onSubmit}>
-             <FormRow
+            {showAlert && <Alert/>}
+            <FormRow
                 type='textarea'
                 name='content'
                 value={content}
                 handleChange={onSetContent}
             />
-            <button type='submit'>Submit Contribution</button>
+            <button type='submit' disabled={isLoading}>Submit Contribution</button>
         </form>
     </>
   )
