@@ -36,7 +36,8 @@ import {
     CREATE_CONTRIBUTION_BEGIN,
     CREATE_CONTRIBUTION_SUCCESS,
     CREATE_CONTRIBUTION_ERROR,
-    DELETE_CONTRIBUTION_BEGIN,                             
+    DELETE_CONTRIBUTION_BEGIN,
+    CLEAR_FILTERS,                             
 } from './actions';
 
 import {initialState} from './appContext';
@@ -327,6 +328,15 @@ const reducer = (state, action) => {
     
     if (action.type === DELETE_CONTRIBUTION_BEGIN) {
       return { ...state, isLoading: true }
+    }
+    
+    if (action.type === CLEAR_FILTERS) {
+      return {
+        ...state,
+        search: '',
+        searchComplete: 'all',
+        sort: 'latest',
+      }
     }    
 
     throw new Error(`no such action: ${action.type}`);

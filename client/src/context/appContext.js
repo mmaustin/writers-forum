@@ -40,7 +40,8 @@ import {
   CREATE_CONTRIBUTION_BEGIN,
   CREATE_CONTRIBUTION_SUCCESS,
   CREATE_CONTRIBUTION_ERROR,
-  DELETE_CONTRIBUTION_BEGIN,              
+  DELETE_CONTRIBUTION_BEGIN,
+  CLEAR_FILTERS,              
 } from './actions';
 
 const token = localStorage.getItem('token');
@@ -377,8 +378,7 @@ const AppProvider = ({children}) => {
     }
     
     const clearFilters = () => {
-      console.log('clear filters');
-      //dispatch({ type: CLEAR_FILTERS })
+      dispatch({ type: CLEAR_FILTERS })
     }    
 
   return(
