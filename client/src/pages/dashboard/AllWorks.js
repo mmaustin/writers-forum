@@ -1,9 +1,9 @@
-import { WorksContainer } from "../../components"
-
+import { WorksContainer, SearchContainer } from "../../components";
 
 const AllWorks = () => {
   return (
     <>
+      <SearchContainer />
       <WorksContainer/>
     </>
   )
