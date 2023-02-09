@@ -374,7 +374,12 @@ const AppProvider = ({children}) => {
       } catch (error) {
         logoutUser()
       }
-  }    
+    }
+    
+    const clearFilters = () => {
+      console.log('clear filters');
+      //dispatch({ type: CLEAR_FILTERS })
+    }    
 
   return(
     <AppContext.Provider
@@ -399,6 +404,7 @@ const AppProvider = ({children}) => {
         getWorkContributions,
         createContribution,
         deleteContribution,
+        clearFilters
       }}
     >
       {children}
