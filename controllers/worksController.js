@@ -24,6 +24,14 @@ const getWorks = async (req,res) => {
 
     const queryObject = {};
 
+    if(complete !== 'all'){
+        queryObject.complete = complete;
+    }
+
+    if(search){
+        queryObject.name = search;
+    }
+
     let result = Work.find(queryObject);
 
     const allWorks = await result
