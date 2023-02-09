@@ -253,7 +253,18 @@ const AppProvider = ({children}) => {
   }
   
   const getWorks = async() => {
-    let url = `/works`;
+    const { search, searchComplete, sort } = state
+
+    // let url = `/jobs?page=${page}&status=${searchStatus}&jobType=${searchType}&sort=${sort}`
+    // if (search) {
+    //   url = url + `&search=${search}`
+    // }
+
+    let url = `/works?complete=${searchComplete}&sort=${sort}`;
+    if (search) {
+      url = url + `&search=${search}`
+    }    
+
     dispatch({type: GET_WORKS_BEGIN});
     try {
         const {data} = await authFetch(url);

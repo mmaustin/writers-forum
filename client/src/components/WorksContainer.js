@@ -9,7 +9,7 @@ const WorksContainer = () => {
   useEffect(() => {
     getWorks()
     // eslint-disable-next-line
-  }, [])
+  }, [search, searchComplete, sort])
 
   if(isLoading){
     return <Loading center />
