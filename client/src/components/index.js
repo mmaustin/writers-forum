@@ -11,6 +11,7 @@ import UserWorksContainer from "./UserWorksContainer";
 import Work from "./Work";
 import WorkInfo from './WorkInfo';
 import WorksContainer from "./WorksContainer";
+import SearchContainer from './SearchContainer'
 
 export {
     Logo,
@@ -25,5 +26,6 @@ export {
     Work,
     WorkInfo,
     FormRowSelect,
+    SearchContainer,
     UserWorksContainer
 }
