@@ -29,10 +29,23 @@ const getWorks = async (req,res) => {
     }
 
     if(search){
-        queryObject.name = search;
+        queryObject.name = {$regex: search, $options: 'i'}
     }
 
     let result = Work.find(queryObject);
+
+    if (sort === 'latest') {
+        result = result.sort('-createdAt')
+      }
+      if (sort === 'oldest') {
+        result = result.sort('createdAt')
+      }
+      if (sort === 'a-z') {
+        result = result.sort('title')
+      }
+      if (sort === 'z-a') {
+        result = result.sort('-title')
+      }    
 
     const allWorks = await result
 
