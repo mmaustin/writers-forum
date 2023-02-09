@@ -20,7 +20,15 @@ const userWorks = async (req,res) => {
 }
 
 const getWorks = async (req,res) => {
-    const allWorks = await Work.find({});
+    const {complete, sort, search} = req.query;
+
+    const queryObject = {};
+
+    let result = Work.find(queryObject);
+
+    const allWorks = await result
+
+    // const allWorks = await Work.find({});
     res.status(StatusCodes.OK).json({allWorks, totalWorks: allWorks.length});
 }
 const updateWork = async (req,res) => {
