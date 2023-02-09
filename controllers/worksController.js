@@ -24,7 +24,7 @@ const getWorks = async (req,res) => {
 
     const queryObject = {};
 
-    if(complete !== 'all'){
+    if(complete && complete !== 'all'){
         queryObject.complete = complete;
     }
 

@@ -71,6 +71,10 @@ const initialState = {
     editWorkId: '',
     workContributions: [],
     totalWorkContributions: 0,
+    search: '',
+    searchComplete: 'all',
+    sort: 'latest',
+    sortOptions: ['latest', 'oldest', 'a-z', 'z-a'],    
 }
 
 const AppContext = React.createContext();
