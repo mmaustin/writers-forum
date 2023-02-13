@@ -338,17 +338,16 @@ ul {
   }
 }
 
-/* my css add-ons */
-/* nav {
-  width: var(--fluid-width);
-  max-width: var(--max-width);
-  margin: 0 auto;
-  height: var(--nav-height);
-  display: flex;
-  align-items: center;
+.completed {
+  color: crimson;
 }
 
-.landing-span {
-  color: var(--primary-800);
-  font-weight: bold;
-} */
+.in-progress {
+  color: green;
+}
+
+.snippet {
+  font-style: italic;
+  font-variant: small-caps;
+  font-weight: 600;
+}

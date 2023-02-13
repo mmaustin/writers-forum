@@ -2,7 +2,7 @@
 const ToggleComplete = ({complete}) => {
   return (
     <h5>
-        {complete === 'true' ? 'Work Completed' : 'Work in Progress'}
+        {complete === 'true' ? <p className='completed'>Completed</p> : <p className="in-progress">In Progress</p>}
     </h5>
   )
 }
