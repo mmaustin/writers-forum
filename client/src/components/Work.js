@@ -21,7 +21,6 @@ const Work = ({_id, title, genre, content, contributions, createdBy, complete}) 
           <WorkInfo icon={<FaPlay />} text={genre} />
           <WorkInfo icon={<FaCalendarAlt />} text={contributions} />
           <WorkInfo icon={<FcClock />} text={complete} />
-          <WorkInfo icon={<FcClock />} text={createdBy} />
         </div>
         <ToggleComplete complete={complete}/>
         <footer>
@@ -29,17 +28,19 @@ const Work = ({_id, title, genre, content, contributions, createdBy, complete}) 
           {user._id === createdBy &&
           <>
           <Link to='add-work' className='btn edit-btn' onClick={()=> setEditWork(_id)}>Edit</Link>
-          <button className='btn delete-btn'type='button' onClick={()=> deleteWork(_id)}>Delete</button>
+          <button className='btn delete-btn'type='button' onClick={()=> deleteWork(_id)}>Delete</button>&nbsp;&nbsp;
           </>
           }     
           {/* <Link to='get-work' className='btn' onClick={()=> getWork(_id)}>Get Work</Link> */}
-          <Link to={`get-work/${_id}`} className='btn'>Get Work</Link>
+          <Link to={`get-work/${_id}`} className='btn'>View Full Work</Link>
           </div>
         </footer>
+        <p></p>
         <main>
           <div className='main-icon'>{content.charAt(0)}</div>
+          <p></p>
           <div className='info'>
-            <h5>{content}</h5>
+            <h5>{content.substring(0,40)} . . .</h5>
           </div>
         </main>
       </div>
