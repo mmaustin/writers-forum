@@ -1,6 +1,6 @@
-import { FaPlay, FaCalendarAlt } from 'react-icons/fa';
-import {IoMdPerson} from 'react-icons/io';
-import {FcClock} from 'react-icons/fc';
+import { RiQuillPenFill} from 'react-icons/ri';
+import {BsFileEarmarkPersonFill} from 'react-icons/bs'
+import {GiOpenBook} from 'react-icons/gi';
 import { useAppContext } from "../context/appContext";
 import Wrapper from '../assets/wrappers/Work';
 import WorkInfo from "./WorkInfo";
@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import ToggleComplete from './ToggleComplete';
 
 
-const Work = ({_id, title, genre, content, contributions, createdBy, complete}) => {
+const Work = ({_id, name, title, genre, content, createdBy, complete}) => {
   const {user, setEditWork, deleteWork} = useAppContext();
 
 
@@ -17,10 +17,9 @@ const Work = ({_id, title, genre, content, contributions, createdBy, complete}) 
     <Wrapper>
       <div className='content'>
         <div className='content-center'>
-          <WorkInfo icon={<IoMdPerson />} text={title} />
-          <WorkInfo icon={<FaPlay />} text={genre} />
-          <WorkInfo icon={<FaCalendarAlt />} text={contributions} />
-          <WorkInfo icon={<FcClock />} text={complete} />
+          <WorkInfo icon={<GiOpenBook />} text={title} />
+          <WorkInfo icon={<RiQuillPenFill />} text={genre} />
+          <WorkInfo icon={<BsFileEarmarkPersonFill />} text={name} />
         </div>
         <ToggleComplete complete={complete}/>
         <footer>
@@ -30,8 +29,7 @@ const Work = ({_id, title, genre, content, contributions, createdBy, complete}) 
           <Link to='add-work' className='btn edit-btn' onClick={()=> setEditWork(_id)}>Edit</Link>
           <button className='btn delete-btn'type='button' onClick={()=> deleteWork(_id)}>Delete</button>&nbsp;&nbsp;
           </>
-          }     
-          {/* <Link to='get-work' className='btn' onClick={()=> getWork(_id)}>Get Work</Link> */}
+          }
           <Link to={`get-work/${_id}`} className='btn'>View Full Work</Link>
           </div>
         </footer>
