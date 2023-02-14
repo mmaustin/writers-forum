@@ -15,10 +15,10 @@ const ContributionsContainer = ({_id, contributions, createdBy, complete}) => {
     },[])
   
     const wContributions = workContributions.filter(contrib => contrib.createdBy === _id)
-    const allContributions = wContributions.map(con =>{
+    const allContributions = wContributions.map((con, i) =>{
       if(user._id === con.originalAuthorId){
         return <div  key={uuidv4()}>
-                <p >{con.content}</p>
+                <p className="contributions-no-caps"><span className="contributor">{con.contributor}</span>: {con.content}</p>
                 <button className="delete-btn" type="button" onClick={()=> deleteContribution(con._id)}>Delete</button>
               </div>
       } else {
@@ -33,6 +33,7 @@ const ContributionsContainer = ({_id, contributions, createdBy, complete}) => {
       <div className="content">
         {contributions}
         <div>{allContributions}</div>
+        <p></p>
         {wContributions.length < contributions &&
           <ContributionAdd createdBy={_id} originalAuthorId={createdBy}/>
         }
