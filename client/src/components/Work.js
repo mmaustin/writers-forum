@@ -1,5 +1,6 @@
 import { RiQuillPenFill} from 'react-icons/ri';
 import {BsFileEarmarkPersonFill} from 'react-icons/bs'
+import {TiDocumentAdd} from 'react-icons/ti'
 import {GiOpenBook} from 'react-icons/gi';
 import { useAppContext } from "../context/appContext";
 import Wrapper from '../assets/wrappers/Work';
@@ -8,7 +9,7 @@ import { Link } from 'react-router-dom';
 import ToggleComplete from './ToggleComplete';
 
 
-const Work = ({_id, name, title, genre, content, createdBy, complete}) => {
+const Work = ({_id, name, title, genre, content, createdBy, contributions, complete}) => {
   const {user, setEditWork, deleteWork} = useAppContext();
 
 
@@ -20,6 +21,7 @@ const Work = ({_id, name, title, genre, content, createdBy, complete}) => {
           <WorkInfo icon={<GiOpenBook />} text={title} />
           <WorkInfo icon={<RiQuillPenFill />} text={genre} />
           <WorkInfo icon={<BsFileEarmarkPersonFill />} text={name} />
+          <WorkInfo icon={<>Contributions Accepted:</>} text={contributions } />
         </div>
         <ToggleComplete complete={complete}/>
         <footer>

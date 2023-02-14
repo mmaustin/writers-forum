@@ -16,7 +16,7 @@ const GetWork = () => {
   const work = workFound.map(wo => {
     return <div key={uuidv4()}>
       <h3 className="contributions-caps">"{wo.title}"</h3>
-      <p className="contributions-no-caps"><span className="contributor">{wo.name}</span>: {wo.content}</p>
+      <p className="contributions-no-caps"><span className="color-green">{wo.name}</span>: {wo.content}</p>
     </div>
   })
 
