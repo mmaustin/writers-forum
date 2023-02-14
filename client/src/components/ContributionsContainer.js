@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useAppContext } from "../context/appContext";
 import { v4 as uuidv4 } from 'uuid';
 import ContributionAdd from './ContributionAdd';
+import Wrapper from '../assets/wrappers/Contribution';
 
 
 const ContributionsContainer = ({_id, contributions, createdBy, complete}) => {
@@ -18,7 +19,7 @@ const ContributionsContainer = ({_id, contributions, createdBy, complete}) => {
       if(user._id === con.originalAuthorId){
         return <div key={uuidv4()}>
                 <p >{con.content}</p>
-                <button type="button" onClick={()=> deleteContribution(con._id)}>Delete</button>
+                <button className="delete-btn" type="button" onClick={()=> deleteContribution(con._id)}>Delete</button>
               </div>
       } else {
         return <div key={uuidv4()}>
@@ -28,14 +29,16 @@ const ContributionsContainer = ({_id, contributions, createdBy, complete}) => {
     })
 
   return (
-    <div>
+    <Wrapper>
+      <div className="content">
         <h3>Contributions Go Here</h3>
         {contributions}
         <div>{allContributions}</div>
         {wContributions.length < contributions &&
           <ContributionAdd createdBy={_id} originalAuthorId={createdBy}/>
-        }     
-    </div>
+        }
+      </div>  
+    </Wrapper>
   )
 }
 export default ContributionsContainer
