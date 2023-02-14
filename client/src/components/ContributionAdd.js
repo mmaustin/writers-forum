@@ -24,10 +24,10 @@ const ContributionAdd = ({originalAuthorId, createdBy}) => {
 
   return (
     <>
-        <h3>Add A Contribution Here</h3>
         <form onSubmit={onSubmit}>
             {showAlert && <Alert/>}
             <FormRow
+                labelText='new contribution'
                 type='textarea'
                 name='content'
                 value={content}
