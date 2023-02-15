@@ -311,6 +311,17 @@ ul {
   max-width: var(--max-width);
   margin: 0 auto;
 }
+
+.container-about {
+  width: var(--fluid-width);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.spacer {
+  margin-top: 30px;
+}
+
 .full-page {
   min-height: 100vh;
 }

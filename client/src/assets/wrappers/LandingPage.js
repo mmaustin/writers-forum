@@ -8,6 +8,7 @@ const Wrapper = styled.main`
     height: var(--nav-height);
     display: flex;
     align-items: center;
+    justify-content: center;
   }
   .page {
     min-height: calc(100vh - var(--nav-height));
