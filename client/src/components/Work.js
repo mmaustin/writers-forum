@@ -1,6 +1,5 @@
 import { RiQuillPenFill} from 'react-icons/ri';
-import {BsFileEarmarkPersonFill} from 'react-icons/bs'
-import {TiDocumentAdd} from 'react-icons/ti'
+import {BsFileEarmarkPersonFill} from 'react-icons/bs';
 import {GiOpenBook} from 'react-icons/gi';
 import { useAppContext } from "../context/appContext";
 import Wrapper from '../assets/wrappers/Work';
