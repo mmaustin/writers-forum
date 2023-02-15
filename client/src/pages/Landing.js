@@ -18,7 +18,7 @@ const Landing = () => {
                 <h3>
                     Write amazing, or not so amazing, works together!
                 </h3>
-                <Link to='/register' className='btn btn-hero'> Login/Register</Link>
+                <Link to='/register' className='btn'> Login/Register</Link>
                 <p></p>
                 <Link to='/about' className='btn green-background'> About Page</Link>
             </div>
