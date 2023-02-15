@@ -15,12 +15,12 @@ const Landing = () => {
                 <h1>
                     Welcome to the Writers' Forum.
                 </h1>
-                <p>
-                    Let's write amazing works together.
-                </p>
+                <h3>
+                    Write amazing, or not so amazing, works together!
+                </h3>
                 <Link to='/register' className='btn btn-hero'> Login/Register</Link>
-                &nbsp;&nbsp;<span className='landing-span'>Or View All Of The </span>&nbsp;&nbsp;
-                <button className='btn btn-hero small-screen-button' > Completed Works </button>
+                <p></p>
+                <Link to='/about' className='btn green-background'> About Page</Link>
             </div>
             <img src={main} alt='event scene' className='img main-img'/>
         </div>

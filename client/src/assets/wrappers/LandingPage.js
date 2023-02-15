@@ -24,9 +24,9 @@ const Wrapper = styled.main`
   p {
     color: var(--grey-600);
   }
-  .main-img {
+  /* .main-img {
     display: block;
-  }
+  } */
 
   .small-screen-button {
     margin-top: 20px;
