@@ -11,10 +11,11 @@ const About = () => {
         <div className='spacer'></div>
         <div className='container-about'>
             <div className='info'>
-                <h2>What will this look like?</h2>
-                <p>how</p>
-                <p>much</p>
-                <p>room</p>
+                <h2>How Does It Work?</h2>
+                <h4>1) Register</h4>
+                <h4>2) As a registered author, you will be able to create a work and edit or delete that specific work.</h4>
+                <h4>3) The creator of a work can also delete any contribution to that work.</h4>
+                <h4>4) Once you register, you can contribute to any other work in progress.</h4>
                 <Link to='/register' className='btn'> Login/Register</Link>
                 <p></p>
                 <Link to='/landing' className='btn green-background'>Home Page</Link>
