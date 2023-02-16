@@ -14,10 +14,10 @@ const createWork = async (req,res) => {
     res.status(StatusCodes.CREATED).json({work});
 }
 
-const userWorks = async (req,res) => {
-    const uWorks = await Work.find({createdBy: req.user.userId});
-    res.status(StatusCodes.OK).json({uWorks, totalUserWorks: uWorks.length});
-}
+// const userWorks = async (req,res) => {
+//     const uWorks = await Work.find({createdBy: req.user.userId});
+//     res.status(StatusCodes.OK).json({uWorks, totalUserWorks: uWorks.length});
+// }
 
 const getWorks = async (req,res) => {
     const {complete, sort, search} = req.query;
@@ -49,7 +49,6 @@ const getWorks = async (req,res) => {
 
     const allWorks = await result
 
-    // const allWorks = await Work.find({});
     res.status(StatusCodes.OK).json({allWorks, totalWorks: allWorks.length});
 }
 const updateWork = async (req,res) => {
@@ -107,7 +106,7 @@ export {
     createWork,
     getWork,
     getWorks,
-    userWorks,
+    // userWorks,
     updateWork,
     deleteWork
 }

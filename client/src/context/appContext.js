@@ -26,8 +26,8 @@ import {
   CREATE_WORK_ERROR,
   GET_WORKS_BEGIN,
   GET_WORKS_SUCCESS,
-  GET_USER_WORKS_BEGIN,
-  GET_USER_WORKS_SUCCESS,
+  // GET_USER_WORKS_BEGIN,
+  // GET_USER_WORKS_SUCCESS,
   GET_WORK_BEGIN,
   GET_WORK_SUCCESS,  
   SET_EDIT_WORK,
@@ -278,20 +278,20 @@ const AppProvider = ({children}) => {
     }
   }
 
-  const getUserWorks = async() => {
-    let url = `/works/userWorks`;
-    dispatch({type: GET_USER_WORKS_BEGIN});
-    try {
-        const {data} = await authFetch(url);
-        const {uWorks, totalUserWorks} = data;
-        dispatch({
-            type: GET_USER_WORKS_SUCCESS,
-            payload: {uWorks, totalUserWorks}
-        })
-    } catch (error) {
-        logoutUser();
-    }
-  }
+  // const getUserWorks = async() => {
+  //   let url = `/works/userWorks`;
+  //   dispatch({type: GET_USER_WORKS_BEGIN});
+  //   try {
+  //       const {data} = await authFetch(url);
+  //       const {uWorks, totalUserWorks} = data;
+  //       dispatch({
+  //           type: GET_USER_WORKS_SUCCESS,
+  //           payload: {uWorks, totalUserWorks}
+  //       })
+  //   } catch (error) {
+  //       logoutUser();
+  //   }
+  // }
 
   const getWork = async (workId) => {
     dispatch({type: GET_WORK_BEGIN});
@@ -407,7 +407,7 @@ const AppProvider = ({children}) => {
         clearValues,
         createWork,
         getWorks,
-        getUserWorks,
+        // getUserWorks,
         setEditWork,
         editWork,
         deleteWork,
