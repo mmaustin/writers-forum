@@ -31,13 +31,10 @@ const Work = ({_id, name, title, genre, content, createdBy, contributions, compl
           <button className='btn delete-btn'type='button' onClick={()=> deleteWork(_id)}>Delete</button>&nbsp;&nbsp;
           </>
           }
-          {/* <Link to={`get-work/${_id}`} className='btn'>View Full Work</Link> */}
           </div>
         </footer>
         <p></p>
         <main>
-          {/* <div className='main-icon'>{content.charAt(0)}</div>
-          <p></p> */}
           <div className='info'>
             <h5 className='snippet'>{content.substring(0,40)} . . .</h5>
             <Link to={`get-work/${_id}`} className='btn'>View Full Work</Link>

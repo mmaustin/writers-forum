@@ -240,10 +240,6 @@ const reducer = (state, action) => {
         ...state,
         isLoading: false,
         work: action.payload.work,
-        // title: action.payload.work.title,
-        // genre: action.payload.work.genre,
-        // content: action.payload.work.content,
-        // contributions: action.payload.work.contributions
       }
     }
     
