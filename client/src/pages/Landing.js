@@ -16,7 +16,7 @@ const Landing = () => {
                     Welcome to the Writers' Forum.
                 </h1>
                 <h3>
-                    Write amazing, or not so amazing, works together!
+                    Write amazing, or not so amazing, works together!!
                 </h3>
                 <Link to='/register' className='btn'> Login/Register</Link>
                 <p></p>
