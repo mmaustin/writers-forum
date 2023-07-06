@@ -20,7 +20,6 @@ const About = () => {
                 <h3>And that's it! start creating together!!</h3>
                 <Link to='/register' className='btn'> Login/Register</Link>
                 <p></p>
-                <Link to='/landing' className='btn green-background'>Home Page</Link>
             </div>
         </div>
     </Wrapper>

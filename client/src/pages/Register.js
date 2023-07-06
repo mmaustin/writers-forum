@@ -2,7 +2,7 @@ import { useAppContext } from "../context/appContext";
 import { Logo, FormRow, Alert } from "../components";
 import { useState, useEffect } from "react";
 import Wrapper from '../assets/wrappers/RegisterPage';
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom';
 
 const localState = {
     name: '',
@@ -82,6 +82,8 @@ const Register = () => {
             {values.isMember ? <span className="color-green">Register</span> : <span className="color-green">Login</span>}
           </button>
         </p>
+        <p></p>
+        <Link to='/about' className='btn'>About Page</Link>
       </form>
     </Wrapper>
   )

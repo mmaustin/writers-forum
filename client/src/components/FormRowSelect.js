@@ -1,10 +1,11 @@
 const FormRowSelect = ({ labelText, name, value, handleChange, list }) => {
     return (
       <div className='form-row'>
-        <label htmlFor={name} className='form-label'>
+        <label htmlFor={labelText ? labelText : name} className='form-label'>
           {labelText || name}
         </label>
         <select
+          id={labelText ? labelText : name}
           name={name}
           value={value}
           onChange={handleChange}
