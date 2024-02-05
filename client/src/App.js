@@ -1,5 +1,5 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import { Landing, Register, Error, About } from "./pages";
+import { Register, Error, About } from "./pages";
 import { AddWork, AllWorks, Profile, SharedLayout, ProtectedRoute, GetWork } from './pages/dashboard';
 
 
@@ -13,7 +13,6 @@ const App = () => {
           <Route path='profile' element={<Profile/>} />
           <Route path='get-work/:id' element={<GetWork/>} />
         </Route>
-        {/* <Route path='/landing' element={<Landing/>} /> */}
         <Route path='/register' element={<Register/>} />
         <Route path='/about' element={<About/>} />
         <Route path='*' element={<Error/>} />        

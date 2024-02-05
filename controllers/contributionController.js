@@ -10,7 +10,6 @@ const createContribution = async(req, res) => {
         throw new BadRequestError('Please provide all values');
     }
 
-    console.log(typeof contributorId);
     checkContributionPermissions(req.user, contributorId);
 
     const contribution = await Contribution.create(req.body);

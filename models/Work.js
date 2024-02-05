@@ -38,8 +38,8 @@ const WorkSchema = new mongoose.Schema({
         enum: ['false', 'true'],
         default: 'false'
     },
-    },
-    {timestamps: true}
+},
+    { timestamps: true }
 )
 
 export default mongoose.model('Work', WorkSchema);

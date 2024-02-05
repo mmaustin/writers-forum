@@ -13,7 +13,6 @@ const ContributionAdd = ({originalAuthorId, createdBy}) => {
     const onSubmit = e => {
         e.preventDefault();
         if(!contributor || !contributorId || !content || !createdBy || !originalAuthorId){
-            console.log('please provide all values');
             displayAlert();
             return
         }
